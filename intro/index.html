@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Mathieu Basille">
+  <meta name="dcterms.date" content="2013-02-27">
+  <title>Introduction to R and exploration of the variance</title>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <style type="text/css">
+    q { quotes: "“" "”" "‘" "’"; }
+  </style>
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
+  <link rel="stylesheet" href="http://ase-research.org/R/rmd.css">
+</head>
+<body>
+<header>
+<h1 class="title">Introduction to R and exploration of the variance</h1>
+<h2 class="author">Mathieu Basille</h2>
+<h3 class="date">February 27, 2013</h3>
+</header>
+<nav id="TOC">
+<ul>
+<li><a href="#first-use">First use</a><ul>
+<li><a href="#the-r-environment">The R environment</a></li>
+<li><a href="#data-types">Data types</a></li>
+<li><a href="#need-help">Need help?</a></li>
+</ul></li>
+<li><a href="#graphics">Graphics</a><ul>
+<li><a href="#scatter-plot">Scatter plot</a></li>
+<li><a href="#boxplots">Boxplots</a></li>
+<li><a href="#histograms">Histograms</a></li>
+<li><a href="#cross-graphics">Cross graphics</a></li>
+</ul></li>
+<li><a href="#variance-of-iris">Variance of iris</a><ul>
+<li><a href="#presentation">Presentation</a></li>
+<li><a href="#mean-comparison">Mean comparison</a></li>
+<li><a href="#partitioning-the-variance">Partitioning the variance</a></li>
+<li><a href="#tests-and-conclusions">Tests and conclusions</a></li>
+</ul></li>
+<li><a href="#r-session-information">R session information</a></li>
+</ul>
+</nav>
+<!-- R & knitr options -->
+
+
+
+
+
+
+
+<blockquote>
+<p>A new statistic proves that 73% of all statistics are pure inventions. <cite>J.J.A. Weber</cite></p>
+</blockquote>
+<p>This document provides the basis to use the <img
+src="http://www.r-project.org/Rlogo.jpg" alt="R" height="16"
+width="21"> software. The first section is generic, and will demonstrate the general use of the software, the different data types<sup><a href="#fn1" class="footnoteRef" id="fnref1">1</a></sup> and the available resources. The second section explore the graphical capabilities of the software. Finally, the document presents an exploration of the analysis of variance. For more details about <img src="http://www.r-project.org/Rlogo.jpg" alt="R"
+height="16" width="21">, see the <a href="http://cran.r-project.org/doc/manuals/R-intro.pdf">Introduction to R</a>. The <img src="http://www.r-project.org/Rlogo.jpg" alt="R" height="16"
+width="21"> code used in this document can be found <a href="IntroR.R">here</a>.</p>
+<h2 id="first-use"><a href="#TOC">First use</a></h2>
+<h3 id="the-r-environment"><a href="#TOC">The R environment</a></h3>
+<p><img src="http://www.r-project.org/Rlogo.jpg" alt="R" height="16"
+width="21"> is a statistical environment based on a command-line language. <img src="http://www.r-project.org/Rlogo.jpg" alt="R"
+height="16" width="21"> is a free software. You can thus <em>freely</em> use it<sup><a href="#fn2" class="footnoteRef" id="fnref2">2</a></sup>, <em>freely</em> distribute it, and <em>freely</em> modify and redistribute it.</p>
+<p>On Windows, if we launch the software, a window opens with a console, in which we can type in commands. A few menus are available, although they are rarely used. A look at <code>Help &gt; Console</code> might help.</p>
+<p>I strongly recommend, however, to use RStudio<sup><a href="#fn3" class="footnoteRef" id="fnref3">3</a></sup>, a free <img
+src="http://www.r-project.org/Rlogo.jpg" alt="R" height="16"
+width="21"> development environment. RStudio makes it easier to manage code, objects, graphs, and also proposes advanced features, such as the support of R Markdown.</p>
+<p>To start with, we check what is the working directory in which <img
+src="http://www.r-project.org/Rlogo.jpg" alt="R" height="16"
+width="21"> started:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">getwd</span>()</code></pre>
+<p>There are several methods to change this folder: among others, the preferred approach should be the code-based approach:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="st">&quot;C:/Documents and Settings/Me/My documents/My folder&quot;</span>)</code></pre>
+<p>The command line accepts directly all kinds of arithmetic and standard functions:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2</span> + <span class="dv">2</span></code></pre>
+<pre><code>[1] 4</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">pi</code></pre>
+<pre><code>[1] 3.142</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span>:<span class="dv">5</span></code></pre>
+<pre><code>[1] 1 2 3 4 5</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sqrt</span>(<span class="dv">26</span>)</code></pre>
+<pre><code>[1] 5.099</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rnorm</span>(<span class="dv">10</span>)</code></pre>
+<pre><code> [1] -0.89634  0.20199 -0.08031  1.39974  0.39661 -1.15755  0.86254 -0.77200
+ [9]  0.01828  0.31029</code></pre>
+<h3 id="data-types"><a href="#TOC">Data types</a></h3>
+<p>In R, everything is an object: Data, functions, outputs, etc. are all stored with the assignation command <code>&lt;-</code>:</p>
+<pre class="sourceCode r"><code class="sourceCode r">foo &lt;- <span class="dv">2</span> + <span class="dv">2</span>
+foo</code></pre>
+<pre><code>[1] 4</code></pre>
+<p><code>foo</code> is a numeric vector of length 1:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(foo)</code></pre>
+<pre><code>[1] &quot;numeric&quot;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(foo)</code></pre>
+<pre><code>[1] 1</code></pre>
+<p>We can associate several numbers in the same vector with the function <code>c</code> (for <q>combine</q>):</p>
+<pre class="sourceCode r"><code class="sourceCode r">foo &lt;- <span class="kw">c</span>(<span class="dv">42</span>, <span class="dv">2</span> + <span class="dv">2</span>, <span class="kw">sqrt</span>(<span class="dv">26</span>))
+foo</code></pre>
+<pre><code>[1] 42.000  4.000  5.099</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(foo)</code></pre>
+<pre><code>[1] &quot;numeric&quot;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(foo)</code></pre>
+<pre><code>[1] 3</code></pre>
+<p>Other common data types are matrices, data frames and lists:</p>
+<pre class="sourceCode r"><code class="sourceCode r">mat &lt;- <span class="kw">matrix</span>(<span class="dv">1</span>:<span class="dv">20</span>, <span class="dt">nrow =</span> <span class="dv">5</span>)
+mat</code></pre>
+<pre><code>     [,1] [,2] [,3] [,4]
+[1,]    1    6   11   16
+[2,]    2    7   12   17
+[3,]    3    8   13   18
+[4,]    4    9   14   19
+[5,]    5   10   15   20</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">df &lt;- <span class="kw">data.frame</span>(<span class="dt">A =</span> <span class="dv">1</span>:<span class="dv">5</span>, <span class="dt">B =</span> <span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dt">length.out =</span> <span class="dv">5</span>))
+df</code></pre>
+<pre><code>  A    B
+1 1 0.00
+2 2 0.25
+3 3 0.50
+4 4 0.75
+5 5 1.00</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(df$B)</code></pre>
+<pre><code>[1] &quot;numeric&quot;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">lis &lt;- <span class="kw">list</span>(<span class="dt">l1 =</span> <span class="dv">1</span>:<span class="dv">10</span>, <span class="dt">l2 =</span> <span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dt">length.out =</span> <span class="dv">5</span>))
+lis</code></pre>
+<pre><code>$l1
+ [1]  1  2  3  4  5  6  7  8  9 10
+
+$l2
+[1] 0.00 0.25 0.50 0.75 1.00</code></pre>
+<p>The most common structure for data is a data frame, i.e. a table with observations as rows and variables as columns. A set of functions are available to explore the data<sup><a href="#fn4" class="footnoteRef" id="fnref4">4</a></sup>. Let’s start with a simple data frame with 20 observations over 4 variables of different types (A, B, C and D):</p>
+<pre class="sourceCode r"><code class="sourceCode r">df &lt;- <span class="kw">data.frame</span>(<span class="dt">A =</span> <span class="dv">1</span>:<span class="dv">20</span>, <span class="dt">B =</span> <span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dt">length.out =</span> <span class="dv">20</span>), <span class="dt">C =</span> <span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;Big&quot;</span>, <span class="st">&quot;Medium&quot;</span>, 
+    <span class="st">&quot;Small&quot;</span>), <span class="dv">20</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>), <span class="dt">D =</span> <span class="kw">rnorm</span>(<span class="dv">20</span>))
+<span class="kw">head</span>(df)</code></pre>
+<pre><code>  A       B      C       D
+1 1 0.00000  Small  1.7167
+2 2 0.05263 Medium  0.8440
+3 3 0.10526    Big  0.6585
+4 4 0.15789  Small  0.3222
+5 5 0.21053  Small -0.5821
+6 6 0.26316 Medium  0.1629</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tail</span>(df)</code></pre>
+<pre><code>    A      B      C        D
+15 15 0.7368    Big  1.14733
+16 16 0.7895 Medium -1.50179
+17 17 0.8421    Big -1.17762
+18 18 0.8947    Big  0.23606
+19 19 0.9474 Medium -0.05802
+20 20 1.0000 Medium -0.56332</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(df)</code></pre>
+<pre><code>&#39;data.frame&#39;:   20 obs. of  4 variables:
+ $ A: int  1 2 3 4 5 6 7 8 9 10 ...
+ $ B: num  0 0.0526 0.1053 0.1579 0.2105 ...
+ $ C: Factor w/ 3 levels &quot;Big&quot;,&quot;Medium&quot;,..: 3 2 1 3 3 2 3 3 2 1 ...
+ $ D: num  1.717 0.844 0.659 0.322 -0.582 ...</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(df)</code></pre>
+<pre><code>       A               B             C           D         
+ Min.   : 1.00   Min.   :0.00   Big   :6   Min.   :-1.502  
+ 1st Qu.: 5.75   1st Qu.:0.25   Medium:8   1st Qu.:-0.608  
+ Median :10.50   Median :0.50   Small :6   Median :-0.253  
+ Mean   :10.50   Mean   :0.50              Mean   :-0.067  
+ 3rd Qu.:15.25   3rd Qu.:0.75              3rd Qu.: 0.705  
+ Max.   :20.00   Max.   :1.00              Max.   : 1.717  </code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(df)</code></pre>
+<pre><code>[1] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(df)</code></pre>
+<pre><code>[1] 20  4</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(df$C)</code></pre>
+<pre><code>
+   Big Medium  Small 
+     6      8      6 </code></pre>
+<p>We can also store a function in an object:</p>
+<pre class="sourceCode r"><code class="sourceCode r">square &lt;- function(x) <span class="kw">print</span>(<span class="kw">paste</span>(<span class="st">&quot;The square of&quot;</span>, x, <span class="st">&quot;is&quot;</span>, x^<span class="dv">2</span>))
+<span class="kw">square</span>(<span class="dv">2</span>)</code></pre>
+<pre><code>[1] &quot;The square of 2 is 4&quot;</code></pre>
+<p>All objects are stored in the user environment. It is possible to list the objects, to remove them, or to save the complete environment for further use<sup><a href="#fn5" class="footnoteRef" id="fnref5">5</a></sup>.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ls</span>()</code></pre>
+<pre><code>[1] &quot;df&quot;     &quot;foo&quot;    &quot;lis&quot;    &quot;mat&quot;    &quot;square&quot;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rm</span>(mat)
+<span class="kw">save.image</span>(<span class="dt">file =</span> <span class="st">&quot;Session.RData&quot;</span>)</code></pre>
+<h3 id="need-help"><a href="#TOC">Need help?</a></h3>
+<p><img src="http://www.r-project.org/Rlogo.jpg" alt="R" height="16"
+width="21"> provides a bunch of utilities to find answers:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">help</span>(<span class="st">&quot;sqrt&quot;</span>)
+?sqrt
+<span class="kw">help.start</span>()
+<span class="kw">apropos</span>(<span class="st">&quot;test&quot;</span>)
+<span class="kw">help.search</span>(<span class="st">&quot;Linear Model&quot;</span>)
+<span class="kw">RSiteSearch</span>(<span class="st">&quot;An Introduction to R&quot;</span>)</code></pre>
+<p><code>help</code> and <code>?</code> are equivalent functions to open the documentation of a function, most often with working examples. <code>help.start()</code> opens the documentation in HTML format directly in the browser. <code>apropos</code> looks for every function that contains a given pattern in their name. <code>help.search</code> search the request in the help files of the installation. Finally, <code>RSiteSearch</code> sends the request to the browser to search in on-line resources (mailing lists, help files, other documents).</p>
+<p>As of today, the best on-line resource to find answers related to a <img src="http://www.r-project.org/Rlogo.jpg" alt="R" height="16"
+width="21"> problem is <a href="http://www.rseek.org/">Rseek</a>, which is the equivalent of <code>RSiteSearch</code> with a very detailed and user-friendly output.</p>
+<h2 id="graphics"><a href="#TOC">Graphics</a></h2>
+<p><img src="http://www.r-project.org/Rlogo.jpg" alt="R" height="16"
+width="21"> has truly amazing capabilities when it comes to graphics. In this section, I will review only simple ones, using base functions. For more advanced users, I strongly recommend to have a look at the <code>ggplot2</code> package<sup><a href="#fn6" class="footnoteRef" id="fnref6">6</a></sup>, which implements the grammar of graphics in <img src="http://www.r-project.org/Rlogo.jpg" alt="R"
+height="16" width="21">.</p>
+<h3 id="scatter-plot"><a href="#TOC">Scatter plot</a></h3>
+<p>The most common graphical type is the 2D scatter plot, which represents X and Y coordinates. Let’s prepare 20 random x-coordinates from a normal distribution (with mean equal to 0 and standard deviation equal to 1). We model the y-coordinates based on the following model:</p>
+<p><br><span class="math"><em>x</em> = 2 × <em>y</em> + <em>ε</em></span><br></p>
+<p>with <span class="math"><em>ε</em></span> being a noise also drawn from a normal distribution, with mean equal to 0 and standard deviation equal to 0.5:</p>
+<pre class="sourceCode r"><code class="sourceCode r">xx &lt;- <span class="kw">rnorm</span>(<span class="dv">20</span>)
+yy &lt;- xx * <span class="dv">2</span> + <span class="kw">rnorm</span>(<span class="dv">20</span>, <span class="dv">0</span>, <span class="fl">0.5</span>)</code></pre>
+<p>A scatterplot uses the generic function <code>plot</code>. We add a line with the function <code>abline</code>, which uses an intercept (here 0) and a slope (here 2):</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(xx, yy)
+<span class="kw">abline</span>(<span class="dt">a =</span> <span class="dv">0</span>, <span class="dt">b =</span> <span class="dv">2</span>)</code></pre>
+<img src="figure/plot.png" title="Simple scatter plot." alt="Simple scatter plot." width=".6\textwidth" />
+<p>We can verify the match between the observed data (i.e. the generated data) and the model using a simple linear regression (function <code>lm</code>):</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(xx, yy)
+<span class="kw">abline</span>(<span class="dt">a =</span> <span class="dv">0</span>, <span class="dt">b =</span> <span class="dv">2</span>)
+lm1 &lt;- <span class="kw">lm</span>(yy ~ xx)
+<span class="kw">abline</span>(lm1, <span class="dt">lty =</span> <span class="dv">2</span>, <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</code></pre>
+<img src="figure/lm.png" title="Simple scatter plot with linear model." alt="Simple scatter plot with linear model." width=".6\textwidth" />
+<h3 id="boxplots"><a href="#TOC">Boxplots</a></h3>
+<p>Boxplots are made using the function <code>boxplot</code>:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(df$D)</code></pre>
+<img src="figure/boxplot1.png" title="Simple boxplot." alt="Simple boxplot." width=".6\textwidth" />
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(df$D ~ df$C)</code></pre>
+<img src="figure/boxplot2.png" title="Boxplot with the formula syntax." alt="Boxplot with the formula syntax." width=".6\textwidth" />
+<h3 id="histograms"><a href="#TOC">Histograms</a></h3>
+<p>Let <code>rand</code> be a set of 1000 random samples drawn from a normal distribution with mean equal to 0 and standard deviation equal to 1. Here is how to create a histogram of this sample:</p>
+<pre class="sourceCode r"><code class="sourceCode r">rand &lt;- <span class="kw">rnorm</span>(<span class="dv">1000</span>)
+<span class="kw">hist</span>(rand)</code></pre>
+<img src="figure/hist1.png" title="Simple histogram." alt="Simple histogram." width=".6\textwidth" />
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(rand, <span class="dt">main =</span> <span class="st">&quot;Normal distribution (frequency)&quot;</span>, <span class="dt">br =</span> -<span class="dv">50</span>:<span class="dv">50</span>/<span class="dv">10</span>)</code></pre>
+<img src="figure/hist2.png" title="Histogram with modified breaks." alt="Histogram with modified breaks." width=".6\textwidth" />
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(rand, <span class="dt">main =</span> <span class="st">&quot;Normal distribution (frequency)&quot;</span>, <span class="dt">br =</span> <span class="kw">c</span>(-<span class="dv">5</span>, -<span class="dv">2</span>, -<span class="dv">1</span>, -<span class="fl">0.25</span>, <span class="dv">0</span>, 
+    <span class="fl">0.5</span>, <span class="fl">1.5</span>, <span class="dv">3</span>, <span class="dv">5</span>))</code></pre>
+<img src="figure/hist3.png" title="Histogram with non-equal cells." alt="Histogram with non-equal cells." width=".6\textwidth" />
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(rand, <span class="dt">main =</span> <span class="st">&quot;Normal distribution (density)&quot;</span>, <span class="dt">br =</span> -<span class="dv">50</span>:<span class="dv">50</span>/<span class="dv">10</span>, <span class="dt">freq =</span> <span class="ot">FALSE</span>)
+<span class="kw">lines</span>(-<span class="dv">50</span>:<span class="dv">50</span>/<span class="dv">10</span>, <span class="kw">dnorm</span>(-<span class="dv">50</span>:<span class="dv">50</span>/<span class="dv">10</span>), <span class="dt">lwd =</span> <span class="dv">3</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">lty =</span> <span class="dv">2</span>)</code></pre>
+<img src="figure/hist4.png" title="Density histogram." alt="Density histogram." width=".6\textwidth" />
+<h3 id="cross-graphics"><a href="#TOC">Cross graphics</a></h3>
+<p>Let’s use the generic <code>plot</code> function on a data frame. What does it show?</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(df)</code></pre>
+<img src="figure/plotdf.png" title="Plot of a data frame." alt="Plot of a data frame." width=".6\textwidth" />
+<p>To understand it better, let’s check the structure of the factor column:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">unclass</span>(df$C)</code></pre>
+<pre><code> [1] 3 2 1 3 3 2 3 3 2 1 3 2 2 1 1 2 1 1 2 2
+attr(,&quot;levels&quot;)
+[1] &quot;Big&quot;    &quot;Medium&quot; &quot;Small&quot; </code></pre>
+<h2 id="variance-of-iris"><a href="#TOC">Variance of iris</a></h2>
+<h3 id="presentation"><a href="#TOC">Presentation</a></h3>
+<p>Let’s have a look at one of the most famous data set from statistics: the Fisher’s (or Anderson’s) iris data set. This data set is directly available in <img src="http://www.r-project.org/Rlogo.jpg" alt="R"
+height="16" width="21"> in the object <code>iris</code>. Let’s check what kind of object it is:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(iris)</code></pre>
+<pre><code>[1] &quot;data.frame&quot;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(iris)</code></pre>
+<pre><code>  Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+1          5.1         3.5          1.4         0.2  setosa
+2          4.9         3.0          1.4         0.2  setosa
+3          4.7         3.2          1.3         0.2  setosa
+4          4.6         3.1          1.5         0.2  setosa
+5          5.0         3.6          1.4         0.2  setosa
+6          5.4         3.9          1.7         0.4  setosa</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(iris)</code></pre>
+<pre><code>&#39;data.frame&#39;:   150 obs. of  5 variables:
+ $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
+ $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...
+ $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...
+ $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...
+ $ Species     : Factor w/ 3 levels &quot;setosa&quot;,&quot;versicolor&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
+<p>This data set contains information measured on 50 flowers from 3 different iris species:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(iris$Species)</code></pre>
+<pre><code>
+    setosa versicolor  virginica 
+        50         50         50 </code></pre>
+<p>Detailed information is available in the help page of the data set:</p>
+<pre class="sourceCode r"><code class="sourceCode r">?iris</code></pre>
+<p>Let’s check that the sepal length increases with the petal length, whatever the species:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(iris$Sepal.Length, iris$Petal.Length)
+<span class="kw">abline</span>(<span class="kw">lm</span>(iris$Petal.Length ~ iris$Sepal.Length))</code></pre>
+<img src="figure/sep.png" title="Petal vs. sepal length." alt="Petal vs. sepal length." width=".6\textwidth" />
+<p>Is this also true for each species separately?</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(iris$Sepal.Length, iris$Petal.Length, <span class="dt">col =</span> <span class="kw">as.numeric</span>(iris$Species))</code></pre>
+<img src="figure/sep2.png" title="Petal vs. sepal length, by species." alt="Petal vs. sepal length, by species." width=".6\textwidth" />
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">coplot</span>(iris$Petal.Length ~ iris$Sepal.Length | iris$Species, <span class="dt">columns =</span> <span class="dv">3</span>)</code></pre>
+<img src="figure/sep3.png" title="Petal vs. sepal length, using coplot." alt="Petal vs. sepal length, using coplot." width=".6\textwidth" />
+<h3 id="mean-comparison"><a href="#TOC">Mean comparison</a></h3>
+<p>Let’s now look at the petal widths. Let’s check if they vary by species:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(iris$Petal.Width ~ iris$Species)</code></pre>
+<img src="figure/width.png" title="Petal width." alt="Petal width." width=".6\textwidth" />
+<p>We’re interested in comparing the means:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(iris$Petal.Width[iris$Species == <span class="st">&quot;setosa&quot;</span>])</code></pre>
+<pre><code>[1] 0.246</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">by</span>(iris$Petal.Width, iris$Species, mean)</code></pre>
+<pre><code>iris$Species: setosa
+[1] 0.246
+------------------------------------------------------------ 
+iris$Species: versicolor
+[1] 1.326
+------------------------------------------------------------ 
+iris$Species: virginica
+[1] 2.026</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">iris$Mean &lt;- <span class="kw">rep</span>(<span class="kw">by</span>(iris$Petal.Width, iris$Species, mean), <span class="dt">each =</span> <span class="dv">50</span>)</code></pre>
+<p>Based on their values only, these means seem clearly different. We can test them 2 by 2 with <em>t</em> tests (the parameter <code>var.equal = TRUE</code> indicates that the variances are equal within each group):</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(iris$Petal.Width[<span class="dv">1</span>:<span class="dv">50</span>], iris$Petal.Width[<span class="dv">51</span>:<span class="dv">100</span>], <span class="dt">var.equal =</span> <span class="ot">TRUE</span>)</code></pre>
+<pre><code>
+    Two Sample t-test
+
+data:  iris$Petal.Width[1:50] and iris$Petal.Width[51:100] 
+t = -34.08, df = 98, p-value &lt; 2.2e-16
+alternative hypothesis: true difference in means is not equal to 0 
+95 percent confidence interval:
+ -1.143 -1.017 
+sample estimates:
+mean of x mean of y 
+    0.246     1.326 </code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(iris$Petal.Width[<span class="dv">51</span>:<span class="dv">100</span>], iris$Petal.Width[<span class="dv">101</span>:<span class="dv">150</span>], <span class="dt">var.equal =</span> <span class="ot">TRUE</span>)</code></pre>
+<pre><code>
+    Two Sample t-test
+
+data:  iris$Petal.Width[51:100] and iris$Petal.Width[101:150] 
+t = -14.63, df = 98, p-value &lt; 2.2e-16
+alternative hypothesis: true difference in means is not equal to 0 
+95 percent confidence interval:
+ -0.795 -0.605 
+sample estimates:
+mean of x mean of y 
+    1.326     2.026 </code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(iris$Petal.Width[<span class="dv">1</span>:<span class="dv">50</span>], iris$Petal.Width[<span class="dv">101</span>:<span class="dv">150</span>], <span class="dt">var.equal =</span> <span class="ot">TRUE</span>)</code></pre>
+<pre><code>
+    Two Sample t-test
+
+data:  iris$Petal.Width[1:50] and iris$Petal.Width[101:150] 
+t = -42.79, df = 98, p-value &lt; 2.2e-16
+alternative hypothesis: true difference in means is not equal to 0 
+95 percent confidence interval:
+ -1.863 -1.697 
+sample estimates:
+mean of x mean of y 
+    0.246     2.026 </code></pre>
+<p>Even though the difference are significant, we are limited by the multiplication of tests (if we had 10 classes, we would have needed 45 tests!) which ends up in multiplicative risks of error. This is why we need to use an analysis of variance (ANOVA) that can deal with this problem in one single test.</p>
+<h3 id="partitioning-the-variance"><a href="#TOC">Partitioning the variance</a></h3>
+<p>The total variance can be split in a treatment variance and an error variance. Let’s have a look at the total variance first:</p>
+<pre class="sourceCode r"><code class="sourceCode r">(totvar &lt;- <span class="dv">1</span>/<span class="kw">nrow</span>(iris) * <span class="kw">sum</span>((iris$Petal.Width - <span class="kw">mean</span>(iris$Petal.Width))^<span class="dv">2</span>))</code></pre>
+<pre><code>[1] 0.5771</code></pre>
+<p>Let’s compare this result with the output of the function <code>var</code>:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">var</span>(iris$Petal.Width)</code></pre>
+<pre><code>[1] 0.581</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">totvar * <span class="kw">nrow</span>(iris)/(<span class="kw">nrow</span>(iris) - <span class="dv">1</span>)</code></pre>
+<pre><code>[1] 0.581</code></pre>
+<p>According to the documentation of <code>var</code>, <q>the denominator <span class="math"><em>n</em> − 1</span> is used which gives an unbiased estimator of the variance for i.i.d. observations.</q> We can create a function to compute the variance with a <span class="math"><em>n</em></span> denominator instead of <span class="math"><em>n</em> − 1</span>:</p>
+<pre class="sourceCode r"><code class="sourceCode r">varN &lt;- function(x) <span class="dv">1</span>/<span class="kw">length</span>(x) * <span class="kw">sum</span>((x - <span class="kw">mean</span>(x))^<span class="dv">2</span>)
+<span class="kw">varN</span>(iris$Petal.Width)</code></pre>
+<pre><code>[1] 0.5771</code></pre>
+<p>We can now proceed with the partitioning of the variance:</p>
+<pre class="sourceCode r"><code class="sourceCode r">(treatvar &lt;- <span class="dv">1</span>/<span class="kw">nrow</span>(iris) * <span class="kw">sum</span>((iris$Mean - <span class="kw">mean</span>(iris$Petal.Width))^<span class="dv">2</span>))</code></pre>
+<pre><code>[1] 0.5361</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">(errvar &lt;- <span class="dv">1</span>/<span class="kw">nrow</span>(iris) * <span class="kw">sum</span>((iris$Petal.Width - iris$Mean)^<span class="dv">2</span>))</code></pre>
+<pre><code>[1] 0.04104</code></pre>
+<p>Let’s check that the total variance is equal to the sum of the other two:</p>
+<pre class="sourceCode r"><code class="sourceCode r">treatvar + errvar</code></pre>
+<pre><code>[1] 0.5771</code></pre>
+<p>There is a dedicated function for an analysis of variance: the function <code>aov</code>, which gives directly the different sums of squares:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">aov</span>(iris$Petal.Width ~ iris$Species)</code></pre>
+<pre><code>Call:
+   aov(formula = iris$Petal.Width ~ iris$Species)
+
+Terms:
+                iris$Species Residuals
+Sum of Squares         80.41      6.16
+Deg. of Freedom            2       147
+
+Residual standard error: 0.2047 
+Estimated effects may be unbalanced</code></pre>
+<p>We can compute the treatment and error variances based on the sums of squares:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="fl">80.41333</span>/<span class="dv">150</span></code></pre>
+<pre><code>[1] 0.5361</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="fl">6.1566</span>/<span class="dv">150</span></code></pre>
+<pre><code>[1] 0.04104</code></pre>
+<h3 id="tests-and-conclusions"><a href="#TOC">Tests and conclusions</a></h3>
+<p>The contribution of the treatment variance in the total variance is given by <span class="math"><em>η</em><sup>2</sup> = <em>V</em><sub><em>T</em><em>r</em><em>e</em><em>a</em><em>t</em><em>m</em><em>e</em><em>n</em><em>t</em><em>s</em></sub> / <em>V</em><sub><em>T</em><em>o</em><em>t</em><em>a</em><em>l</em></sub></span>: <!-- $\eta^2 = \frac{V_{Treatments}}{V_{Total}}$ --></p>
+<pre class="sourceCode r"><code class="sourceCode r">treatvar/totvar</code></pre>
+<pre><code>[1] 0.9289</code></pre>
+<p>The actual ANOVA test can be performed with the <code>ANOVA</code> function, based on the linear model that we want to try:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">anova</span>(<span class="kw">lm</span>(iris$Petal.Width ~ iris$Species))</code></pre>
+<pre><code>Analysis of Variance Table
+
+Response: iris$Petal.Width
+              Df Sum Sq Mean Sq F value Pr(&gt;F)    
+iris$Species   2   80.4    40.2     960 &lt;2e-16 ***
+Residuals    147    6.2     0.0                   
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1 </code></pre>
+<p><em>Conclusions?</em></p>
+<h2 id="r-session-information"><a href="#TOC">R session information</a></h2>
+<pre><code>R version 2.15.2 (2012-10-26)
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+[1] codetools_0.2-8     knitcitations_0.3-3 bibtex_0.3-5       
+[4] knitr_1.0.5         basr_0.5.1         
+
+loaded via a namespace (and not attached):
+ [1] compiler_2.15.2 digest_0.6.1    evaluate_0.4.3  formatR_0.7    
+ [5] fortunes_1.4-2  RCurl_1.95-3    stringr_0.6.2   tools_2.15.2   
+ [9] XML_3.9-4       xtable_1.5-6   </code></pre>
+<section class="footnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Data importation is not covered in this document.<a href="#fnref1">↩</a></p></li>
+<li id="fn2"><p>Available at: <a href="http://www.r-project.org">http://www.r-project.org</a><a href="#fnref2">↩</a></p></li>
+<li id="fn3"><p>Available at: <a href="http://www.rstudio.com/">http://www.rstudio.com/</a><a href="#fnref3">↩</a></p></li>
+<li id="fn4"><p>All these functions can be used on any data type, but will only be demonstrated here on data frames. Feel free to explore with other data types!<a href="#fnref4">↩</a></p></li>
+<li id="fn5"><p>The standard behavior is to do it interactively when the user terminates a session.<a href="#fnref5">↩</a></p></li>
+<li id="fn6"><p>See here: <a href="http://ggplot2.org/">http://ggplot2.org/</a><a href="#fnref6">↩</a></p></li>
+</ol>
+</section>
+</body>
+</html>

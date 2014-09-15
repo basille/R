@@ -1,0 +1,10 @@
+### Default pdf viewer
+#R_PDFVIEWER='/usr/bin/xpdf'
+R_PDFVIEWER='/usr/bin/evince'
+#R_PDFVIEWER=${R_PDFVIEWER-'evince'}
+
+### To get R in English:
+LANGUAGE=en
+
+### Packages in the home directory:
+R_LIBS="~/.R-site/site-library:${R_LIBS}"
