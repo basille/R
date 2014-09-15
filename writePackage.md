@@ -1,0 +1,283 @@
+% Basic steps to write a package for R
+% Mathieu Basille
+% July 09, 2013 (updated on February 17, 2014)
+
+
+<!-- R & knitr options -->
+
+
+
+
+This document briefly explains the minimal steps to write a package
+for R. Detailed information are given in the
+[`devtools` wiki](https://github.com/hadley/devtools/wiki) and the R
+manual
+["Writing R Extensions"](http://cran.r-project.org/doc/manuals/R-exts.html). Most
+of the work involves the
+[package `devtools`](http://cran.r-project.org/web/packages/devtools/index.html). We
+also make use of the base R package `tools`.
+
+
+```r
+library(devtools)
+library(tools)
+```
+
+
+## Package structure
+
+We start by setting the working directory if necessary and the name of
+the package to create:
+
+
+```r
+setwd("/home/mathieu/.R-site/packages")
+pkg <- "mypkg"
+```
+
+
+We can then create the package skeleton. This will create the most
+minimal package structure, with the following structure:
+
+    <mypkg>/
+    +-- man
+    |   +-- <list>.Rd
+    +-- R
+    |   +-- <mypkg>-package.r
+    +-- DESCRIPTION
+    +-- NAMESPACE
+
+* `man`: A directory which contains help files (`.Rd`) for each
+  documented function and the package itself. They will be
+  automatically generated with the help of the
+  [package `roxygen2`](http://cran.r-project.org/web/packages/roxygen2/index.html);
+* `R`: A directory which contains all R source code, possibly in a
+  single file (`<mypkg>-package.r`);
+* `DESCRIPTION`: A file which provides metadata about the package;
+* `NAMESPACE`: A file which describes the functions available for
+  others to use. It will be also automatically generated.
+
+
+```r
+create(pkg)
+```
+
+
+We then need to edit the content of the `DESCRIPTION` file. An example
+would look like the following (note it will be reformatted in the
+process, such as line breaks):
+
+    Package: basr
+    Version: 0.5.2
+    Date: 2013-02-28
+    Title: This package provides a bunch of basic functions for a variety of usage.
+        For a list of documented functions, use library(help = "basr")
+    Author: Mathieu Basille, Samuel Brown, Marc in the box, Jean Lobry, Kevin Wright
+    Maintainer: Mathieu Basille <basille@ase-research.org>
+    Suggests:
+        devtools
+    Description: 
+    License: GPL (>= 3)
+    URL: http://ase-research.org/basille/basr
+
+
+## R code and documentation
+
+The R source code can then be placed in the `R` directory, with one
+file per function or a single R file with all the code
+`/R/mypkg-package.r`. All functions and data sets, as well as the
+package itself, must be documented following the `roxygen2` syntax
+directly in the source code[^fndevdoc]. When the functions are ready
+to use, they can be loaded (with a result similar to a call to
+`library(<mypkg>)` for a regularly installed package) via:
+
+[^fndevdoc]: See the
+["Advanced R programming" website](http://adv-r.had.co.nz/Documenting-functions.html)
+for more details.
+
+
+```r
+load_all(pkg)
+```
+
+
+If the `roxygen2` tags are properly completed in the R source code, we
+can proceed to update the documentation (`.Rd` files, `DESCRIPTION`
+and `NAMESPACE`):
+
+
+```r
+document(pkg)
+```
+
+
+A series of checks can then be run, first on the examples, and then
+more generally on the package structure and content:
+
+
+```r
+run_examples(pkg)
+check(pkg)
+```
+
+
+If problems such as "Error : extractFromURL.Rd: non-ASCII input and no declared encoding" arrise, we can use the `tools` package to identify which is (are) the faulty line(s):
+
+
+```r
+showNonASCII(readLines(paste0(pkg, "/man/XXX.Rd")))
+```
+
+
+For complex packages, it might be useful to prepare and run a battery
+of tests[^fndevtest]. 
+
+[^fndevtest]: See the
+["Advanced R programming" website](http://adv-r.had.co.nz/Testing.html) for
+more details.
+
+
+```r
+test(pkg)
+```
+
+
+Now don't forget to write the changelog and news in the NEWS
+file[^fndevnews]. The PDF manual can be easily generated with the
+homebrew function `manual`, which is wrapper to `R CMD Rd2pdf`. The
+function needs the package name or path as input. Options include the
+target directory (by default, the package directory, which is where
+I'll leave them), and two additional options to preview (`preview =
+TRUE` by default) or overwrite (`overwrite = FALSE` by default) the
+PDF.
+
+[^fndevnews]: See the
+["Advanced R programming" website](http://adv-r.had.co.nz/Documenting-packages.html)
+for more details.
+
+
+```r
+manual(pkg)
+manual(pkg, overwrite = TRUE)
+```
+
+
+
+
+## Installation and packaging
+
+The package is now ready to install. The package can be directly
+installed locally:
+
+
+```r
+install(pkg)
+```
+
+
+To distribute the package, we need to prepare compressed archives of
+the package. A universal approach is to build a source package in a
+`.tar.gz` file. Note that if the packages already exist in the target
+directory, they will be overwritten. Binary packages can also be built
+if necessary (using `binary = TRUE`). For non-Windows users, there is
+a special function `built_win` that build Windows binaries using the
+web service [Win-builder](http://win-builder.r-project.org/). This
+service uses the e-mail address specified in the "Maintainer" field of
+the package's `DESCRIPTION` file to send the result of the process.
+
+
+```r
+build(pkg, path = "src/contrib")
+build_win(pkg)
+```
+
+
+If the checks are successful, the package can be released to CRAN
+(expect difficulties):
+
+
+```r
+release()
+```
+
+
+However, if we just want to publish the package in a user web
+repository, we just need a simple structure with the following
+elements:
+
+    R/
+    +-- bin
+    |   +-- windows
+    |       +-- contrib
+    |           +-- x.y
+    +-- src
+        +-- contrib
+
+* `bin`: A directory which contains all binary packages. Windows
+  binaries as .zip files are located at `bin/windows/contrib/x.y` for
+  R versions `x.y.z`.
+* `src`: A directory which contains all source packages (current and
+  older). Files are located at `src/contrib`.
+
+For the repository to work, there's just the need for a file listing
+in a `PACKAGES` file, which is generated with the package `tools`:
+
+
+```r
+write_PACKAGES(dir = "src/contrib", verbose = TRUE)
+write_PACKAGES(dir = "bin/windows/contrib/3.0.3", type = "win.binary",
+    verbose = TRUE)
+```
+
+
+The package directory can then be uploaded to the web repository. For
+the Ase repository, upload everything to
+http://ase-research.org/R/. Two pages need to be edited to take the
+changes into account: `/functions.shtml` (which lists the available
+functions/packages) and `/<name>/<pkg>/index.shtml` (which will give
+the details of the package).
+
+Finally, the package can be installed remotely on any Windows or Linux
+machine using:
+
+
+```r
+install.packages("mypkg", repos = "http://ase-research.org/R/")
+```
+
+
+If the previous command does not work, e.g. with other operating systems such as OS X, you can compile the source package with the command (note that `type = source` is the default setup on most Linux installations):
+
+
+```r
+install.packages("mypkg", repos = "http://ase-research.org/R/", type = "source")
+```
+
+
+
+## R session information
+
+
+```
+R version 3.0.2 (2013-09-25)
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+attached base packages:
+[1] tcltk     tools     stats     graphics  grDevices utils     datasets 
+[8] methods   base     
+
+other attached packages:
+ [1] codetools_0.2-8     knitr_1.5           hab_1.9.2          
+ [4] rgeos_0.3-2         tkrplot_0.0-23      adehabitatHR_0.4.10
+ [7] deldir_0.1-1        adehabitatLT_0.3.14 CircStats_0.2-4    
+[10] boot_1.3-9          MASS_7.3-29         adehabitatMA_0.3.8 
+[13] ade4_1.6-2          sp_1.0-14           roxygen2_3.0.0     
+[16] devtools_1.4.1      basr_0.7.2         
+
+loaded via a namespace (and not attached):
+ [1] brew_1.0-6      compiler_3.0.2  digest_0.6.4    evaluate_0.5.1 
+ [5] formatR_0.10    fortunes_1.5-2  grid_3.0.2      httr_0.2       
+ [9] lattice_0.20-24 memoise_0.1     parallel_3.0.2  RCurl_1.95-4.1 
+[13] stringr_0.6.2   whisker_0.3-2  
+```
+
