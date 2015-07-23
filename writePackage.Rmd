@@ -207,7 +207,7 @@ in a `PACKAGES` file, which is generated with the package `tools`:
 
 ```{r listing, eval = FALSE, tidy = FALSE}
 write_PACKAGES(dir = "src/contrib", verbose = TRUE)
-write_PACKAGES(dir = "bin/windows/contrib/3.1.1", type = "win.binary",
+write_PACKAGES(dir = "bin/windows/contrib/3.1.2", type = "win.binary",
     verbose = TRUE)
 write_PACKAGES(dir = "bin/windows/contrib/3.2", type = "win.binary",
     verbose = TRUE)
