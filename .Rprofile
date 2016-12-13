@@ -1,6 +1,7 @@
-### Options: repository, papersize (letter), no tcltk, anx xpdf
+### Options: CRAN mirror, papersize (letter), no tcltk, and max print
+## options(repos = c(CRAN = "http://cran.r-project.org/"),
 #options(repos = c(CRAN = " http://cran.rstudio.com/"),
-options(repos = c(CRAN = "http://cran.r-project.org/"),
+options(repos = c(CRAN = "https://mirrors.nics.utk.edu/cran/"),
     papersize = "letter", menu.graphics = FALSE, max.print = 999)
 
 ### Silently load 'basr' together with default packages
@@ -8,7 +9,8 @@ options(defaultPackages = c(getOption("defaultPackages"), "basr"))
 ### Load packages at the start of R if the package list exists
 basr:::.loadpkglist()
 
-### Interactive sessions get a fortune cookie (needs fortunes package)
+### Interactive sessions get a fortune cookie (needs cosway and
+### fortunes packages)
 if (interactive() & require(cowsay, quietly = TRUE))
     cowsay::say(what = "fortune",
                 by = sample(names(animals)[!(names(animals) %in%
