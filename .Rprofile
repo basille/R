@@ -10,7 +10,7 @@ basr:::.loadpkglist()
 
 ### Interactive sessions get a fortune cookie (needs fortunes package)
 if (interactive() & require(cowsay, quietly = TRUE))
-    cowsay::say(fortune = "whatever",
+    cowsay::say(what = "fortune",
                 by = sample(names(animals)[!(names(animals) %in%
         c("shortcat", "longcat", "fish", "signbunny", "stretchycat",
             "anxiouscat", "longtailcat", "grumpycat", "mushroom"))],
