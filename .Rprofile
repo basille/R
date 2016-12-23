@@ -4,10 +4,15 @@
 options(repos = c(CRAN = "https://mirrors.nics.utk.edu/cran/"),
     papersize = "letter", menu.graphics = FALSE, max.print = 999)
 
-### Silently load 'basr' together with default packages
-options(defaultPackages = c(getOption("defaultPackages"), "basr"))
+### Silently load 'basr' and 'cowplot' together with default packages
+options(defaultPackages = c(getOption("defaultPackages"), "basr",
+    "cowplot"))
 ### Load packages at the start of R if the package list exists
 basr:::.loadpkglist()
+### Change in default cowplot/ggplot2 theme: Major grid lines by
+### default
+ggplot2::theme_update(panel.grid.major =
+    ggplot2::element_line(colour = "grey90", size = 0.2))
 
 ### Interactive sessions get a fortune cookie (needs cosway and
 ### fortunes packages)
