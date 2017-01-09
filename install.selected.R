@@ -16,7 +16,7 @@ install.packages("adehabitatHS", "rpostgisLT")
 install.packages(c("cowplot", "tidyverse"))
 
 ## Other packages
-install.packages(c("broom", "Cairo", "CircStats", "colorRamps", "cowplot", "cowsay", "coxme", "devtools", "dismo", "foreign", "formatR", "ggfortify", "gridExtra", "Hmisc", "knitr", "leaflet", "lme4", "lsmeans", "move", "MuMIn", "popbio", "randomForest", "rasterVis", "reshape2", "RMark", "rmarkdown", "roxygen2", "rworldmap", "rworldxtra", "scales", "SDMTools", "shiny", "tidyverse"))
+install.packages(c("broom", "Cairo", "CircStats", "colorRamps", "cowplot", "cowsay", "coxme", "devtools", "dismo", "fancycut", "foreign", "formatR", "ggfortify", "gridExtra", "Hmisc", "knitr", "leaflet", "lme4", "lsmeans", "move", "MuMIn", "popbio", "randomForest", "rasterVis", "reshape2", "RMark", "rmarkdown", "roxygen2", "rworldmap", "rworldxtra", "scales", "SDMTools", "shiny", "tidyverse"))
 
 ## MabLab packages on GitHub
 library("devtools")
