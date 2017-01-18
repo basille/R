@@ -29,71 +29,62 @@ install.views("Spatial", coreOnly = TRUE)
 ## - spdep: Spatial Dependence: Weighting Schemes, Statistics and Models
 ## - splancs: Spatial and Space-Time Point Pattern Analysis
 
-## Other spatial packages
 install.packages(c(
+
+    ## Other spatial packages
     "rworldmap",         # Mapping Global Data
     "rworldxtra",        # Country boundaries at high resolution
     "leaflet",           # Create Interactive Web Maps with the JavaScript 'Leaflet' Library
     "rasterVis",         # Visualization Methods for Raster Data
-    ))
 
-## adehabitat, rpostgis and friends
-install.packages(c(
+    ## adehabitat, rpostgis and friends
     "adehabitatHS",      # Analysis of Habitat Selection by Animals
     "move",              # Visualizing and Analyzing Animal Track Data
-    "rpostgisLT"         # Managing Animal Movement Data with 'PostGIS' and R
-))
+    "rpostgisLT",        # Managing Animal Movement Data with 'PostGIS' and R
 
-## Tidyverse
-install.packages(
-    "tidyverse"          # Easily Install and Load 'Tidyverse' Packages
-)
-## Currently includes ():
-## ** Core:
-## - dplyr: A Grammar of Data Manipulation
-## - ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics
-## - purrr: Functional Programming Tools
-## - readr: Read Tabular Data
-## - tibble: Simple Data Frames
-## - tidyr: Easily Tidy Data with 'spread()' and 'gather()' Functions
-## ** Specific vectors:
-## - forcats: Tools for Working with Categorical Variables (Factors)
-## - hms: Pretty Time of Day
-## - lubridate: Make Dealing with Dates a Little Easier
-## - stringr: Simple, Consistent Wrappers for Common String Operations
-## ** Data import:
-## - DBI: R Database Interface
-## - haven: Import and Export 'SPSS', 'Stata' and 'SAS' Files
-## - httr: Tools for Working with URLs and HTTP
-## - jsonlite: A Robust, High Performance JSON Parser and Generator for R
-## - readxl: Read Excel Files
-## - rvest: Easily Harvest (Scrape) Web Pages
-## - xml2: Parse XML
-## ** Modeling:
-## - broom: Convert Statistical Analysis Objects into Tidy Data Frames
-## - modelr: Modelling Functions that Work with the Pipe
+    ## Tidyverse
+    "tidyverse",         # Easily Install and Load 'Tidyverse' Packages
+    ## Currently includes (2017-01-18):
+    ## ** Core:
+    ## - dplyr: A Grammar of Data Manipulation
+    ## - ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics
+    ## - purrr: Functional Programming Tools
+    ## - readr: Read Tabular Data
+    ## - tibble: Simple Data Frames
+    ## - tidyr: Easily Tidy Data with 'spread()' and 'gather()' Functions
+    ## ** Specific vectors:
+    ## - forcats: Tools for Working with Categorical Variables (Factors)
+    ## - hms: Pretty Time of Day
+    ## - lubridate: Make Dealing with Dates a Little Easier
+    ## - stringr: Simple, Consistent Wrappers for Common String Operations
+    ## ** Data import:
+    ## - DBI: R Database Interface
+    ## - haven: Import and Export 'SPSS', 'Stata' and 'SAS' Files
+    ## - httr: Tools for Working with URLs and HTTP
+    ## - jsonlite: A Robust, High Performance JSON Parser and Generator for R
+    ## - readxl: Read Excel Files
+    ## - rvest: Easily Harvest (Scrape) Web Pages
+    ## - xml2: Parse XML
+    ## ** Modeling:
+    ## - broom: Convert Statistical Analysis Objects into Tidy Data Frames
+    ## - modelr: Modelling Functions that Work with the Pipe
 
-## Plotting extra
-install.packages(c(
+    ## Plotting extra
     "Cairo",             # R graphics device using cairo graphics library for creating high-quality bitmap (PNG, JPEG, TIFF), vector (PDF, SVG, PostScript) and display (X11 and Win32) output
     "colorRamps",        # Builds color tables
     "cowplot",           # Streamlined Plot Theme and Plot Annotations for 'ggplot2'
     "ggfortify",         # Data Visualization Tools for Statistical Analysis Results
     "gridExtra",         # Miscellaneous Functions for "Grid" Graphics
-    ))
 
-## Data management
-install.packages(c(
+    ## Data management
     "broom",             # Convert Statistical Analysis Objects into Tidy Data Frames
     "fancycut",          # A Fancy Version of 'base::cut'
     "foreign",           # Read Data Stored by Minitab, S, SAS, SPSS, Stata, Systat, Weka, dBase, ...
     "padr",              # Quickly Get Datetime Data Ready for Analysis
     "reshape2",          # Flexibly Reshape Data: A Reboot of the Reshape Package
     "scales",            # Scale Functions for Visualization
-    ))
 
-## Modeling
-install.packages(c(
+    ## Modeling
     "CircStats",         # Circular Statistics, from "Topics in circular Statistics" (2001)
     "coxme",             # Mixed Effects Cox Models
     "dismo",             # Species Distribution Modeling
@@ -104,10 +95,8 @@ install.packages(c(
     "randomForest",      # Breiman and Cutler's Random Forests for Classification and Regression
     "RMark",             # R Code for Mark Analysis
     "SDMTools",          # Species Distribution Modelling Tools: Tools for processing data associated with species distribution modelling exercises
-    ))
 
-## Other packages
-install.packages(c(
+    ## Other packages
     "cowsay",            # Messages, Warnings, Strings with Ascii Animals
     "devtools",          # Tools to Make Developing R Packages Easier
     "formatR",           # Format R Code Automatically
