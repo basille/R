@@ -75,6 +75,7 @@ install.packages(c(
     "cowplot",           # Streamlined Plot Theme and Plot Annotations for 'ggplot2'
     "ggfortify",         # Data Visualization Tools for Statistical Analysis Results
     "gridExtra",         # Miscellaneous Functions for "Grid" Graphics
+    "factoextra",        # Extract and Visualize the Results of Multivariate Data Analyses
 
     ## Data management
     "broom",             # Convert Statistical Analysis Objects into Tidy Data Frames
