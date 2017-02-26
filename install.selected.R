@@ -73,6 +73,7 @@ install.packages(c(
     "Cairo",             # R graphics device using cairo graphics library for creating high-quality bitmap (PNG, JPEG, TIFF), vector (PDF, SVG, PostScript) and display (X11 and Win32) output
     "colorRamps",        # Builds color tables
     "cowplot",           # Streamlined Plot Theme and Plot Annotations for 'ggplot2'
+    "ggalt",             # Extra Coordinate Systems, Geoms, Statistical Transformations, Scales & Fonts for 'ggplot2'
     "ggfortify",         # Data Visualization Tools for Statistical Analysis Results
     "gridExtra",         # Miscellaneous Functions for "Grid" Graphics
     "factoextra",        # Extract and Visualize the Results of Multivariate Data Analyses
