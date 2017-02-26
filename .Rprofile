@@ -4,7 +4,7 @@
 options(repos = c(CRAN = "https://mirrors.nics.utk.edu/cran/"),
     papersize = "letter", menu.graphics = FALSE, max.print = 999)
 
-### Silently load 'basr' and 'cowplot' together with default packages
+## Silently load 'basr' and 'cowplot' together with default packages
 options(defaultPackages = c(getOption("defaultPackages"), "basr",
     "cowplot"))
 ### Load packages at the start of R if the package list exists

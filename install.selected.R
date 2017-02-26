@@ -76,7 +76,10 @@ install.packages(c(
     "ggalt",             # Extra Coordinate Systems, Geoms, Statistical Transformations, Scales & Fonts for 'ggplot2'
     "ggfortify",         # Data Visualization Tools for Statistical Analysis Results
     "gridExtra",         # Miscellaneous Functions for "Grid" Graphics
+    "hexbin",            # Hexagonal Binning Routines
+    "hrbrthemes",        # Additional Themes, Theme Components and Utilities for 'ggplot2'
     "factoextra",        # Extract and Visualize the Results of Multivariate Data Analyses
+    "viridis",           # Default Color Maps from 'matplotlib'
 
     ## Data management
     "broom",             # Convert Statistical Analysis Objects into Tidy Data Frames
@@ -85,6 +88,7 @@ install.packages(c(
     "padr",              # Quickly Get Datetime Data Ready for Analysis
     "reshape2",          # Flexibly Reshape Data: A Reboot of the Reshape Package
     "scales",            # Scale Functions for Visualization
+    "units",             # Measurement Units for R Vectors
 
     ## Modeling
     "CircStats",         # Circular Statistics, from "Topics in circular Statistics" (2001)

@@ -26,56 +26,56 @@ code > span.al { color: #ff0000; font-weight: bold; }
 code > span.fu { color: #06287e; }
 code > span.er { color: #ff0000; font-weight: bold; }
   </style>
-  <link rel="stylesheet" href="http://ase-research.org/R/rmd.css" type="text/css" />
+  <link rel="stylesheet" href="https://ase-research.org/R/rmd.css" type="text/css" />
 </head>
 <body>
-<div id="header">
-<h1 class="title">Basic steps to write a package for R</h1>
-<h2 class="author">Mathieu Basille</h2>
-<h3 class="date">July 09, 2013 (updated on February 17, 2014)</h3>
-</div>
-<div id="TOC">
-<ul>
-<li><a href="#package-structure">Package structure</a></li>
-<li><a href="#r-code-and-documentation">R code and documentation</a></li>
-<li><a href="#installation-and-packaging">Installation and packaging</a></li>
-<li><a href="#r-session-information">R session information</a></li>
-</ul>
-</div>
-<!-- How to run knitr and produce a HTML page -->
+    <div id="header">
+        <h1 class="title">Basic steps to write a package for R</h1>
+        <h2 class="author">Mathieu Basille</h2>
+        <h3 class="date">July 09, 2013 (updated on February 17, 2014)</h3>
+    </div>
+    <div id="TOC">
+        <ul>
+            <li><a href="#package-structure">Package structure</a></li>
+            <li><a href="#r-code-and-documentation">R code and documentation</a></li>
+            <li><a href="#installation-and-packaging">Installation and packaging</a></li>
+            <li><a href="#r-session-information">R session information</a></li>
+        </ul>
+    </div>
+    <!-- How to run knitr and produce a HTML page -->
 
 
 
 
-<!-- R & knitr options -->
+    <!-- R & knitr options -->
 
 
 
 
-<p>This document briefly explains the minimal steps to write a package for R. Detailed information are given in the <a href="https://github.com/hadley/devtools/wiki"><code>devtools</code> wiki</a> and the R manual <a href="http://cran.r-project.org/doc/manuals/R-exts.html">“Writing R Extensions”</a>. Most of the work involves the <a href="http://cran.r-project.org/web/packages/devtools/index.html">package <code>devtools</code></a>. We also make use of the base R package <code>tools</code>.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(devtools)
-<span class="kw">library</span>(tools)</code></pre>
-<h2 id="package-structure"><a href="#package-structure">Package structure</a></h2>
-<p>We start by setting the working directory if necessary and the name of the package to create:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="st">&quot;/home/mathieu/.R-site/packages&quot;</span>)
+    <p>This document briefly explains the minimal steps to write a package for R. Detailed information are given in the <a href="https://github.com/hadley/devtools/wiki"><code>devtools</code> wiki</a> and the R manual <a href="http://cran.r-project.org/doc/manuals/R-exts.html">“Writing R Extensions”</a>. Most of the work involves the <a href="http://cran.r-project.org/web/packages/devtools/index.html">package <code>devtools</code></a>. We also make use of the base R package <code>tools</code>.</p>
+    <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(devtools)
+        <span class="kw">library</span>(tools)</code></pre>
+    <h2 id="package-structure"><a href="#package-structure">Package structure</a></h2>
+    <p>We start by setting the working directory if necessary and the name of the package to create:</p>
+    <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="st">&quot;/home/mathieu/.R-site/packages&quot;</span>)
 pkg &lt;-<span class="st"> &quot;mypkg&quot;</span></code></pre>
-<p>We can then create the package skeleton. This will create the most minimal package structure, with the following structure:</p>
-<pre><code>&lt;mypkg&gt;/
+    <p>We can then create the package skeleton. This will create the most minimal package structure, with the following structure:</p>
+    <pre><code>&lt;mypkg&gt;/
 +-- man
 |   +-- &lt;list&gt;.Rd
 +-- R
 |   +-- &lt;mypkg&gt;-package.r
 +-- DESCRIPTION
 +-- NAMESPACE</code></pre>
-<ul>
-<li><code>man</code>: A directory which contains help files (<code>.Rd</code>) for each documented function and the package itself. They will be automatically generated with the help of the <a href="http://cran.r-project.org/web/packages/roxygen2/index.html">package <code>roxygen2</code></a>;</li>
-<li><code>R</code>: A directory which contains all R source code, possibly in a single file (<code>&lt;mypkg&gt;-package.r</code>);</li>
-<li><code>DESCRIPTION</code>: A file which provides metadata about the package;</li>
-<li><code>NAMESPACE</code>: A file which describes the functions available for others to use. It will be also automatically generated.</li>
-</ul>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">create</span>(pkg)</code></pre>
-<p>We then need to edit the content of the <code>DESCRIPTION</code> file. An example would look like the following (note it will be reformatted in the process, such as line breaks):</p>
-<pre><code>Package: basr
+    <ul>
+        <li><code>man</code>: A directory which contains help files (<code>.Rd</code>) for each documented function and the package itself. They will be automatically generated with the help of the <a href="http://cran.r-project.org/web/packages/roxygen2/index.html">package <code>roxygen2</code></a>;</li>
+        <li><code>R</code>: A directory which contains all R source code, possibly in a single file (<code>&lt;mypkg&gt;-package.r</code>);</li>
+        <li><code>DESCRIPTION</code>: A file which provides metadata about the package;</li>
+        <li><code>NAMESPACE</code>: A file which describes the functions available for others to use. It will be also automatically generated.</li>
+    </ul>
+    <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">create</span>(pkg)</code></pre>
+    <p>We then need to edit the content of the <code>DESCRIPTION</code> file. An example would look like the following (note it will be reformatted in the process, such as line breaks):</p>
+    <pre><code>Package: basr
 Version: 0.5.2
 Date: 2013-02-28
 Title: This package provides a bunch of basic functions for a variety of usage.
@@ -86,53 +86,53 @@ Suggests:
     devtools
 Description: 
 License: GPL (&gt;= 3)
-URL: http://ase-research.org/basille/basr</code></pre>
-<h2 id="r-code-and-documentation"><a href="#r-code-and-documentation">R code and documentation</a></h2>
-<p>The R source code can then be placed in the <code>R</code> directory, with one file per function or a single R file with all the code <code>/R/mypkg-package.r</code>. All functions and data sets, as well as the package itself, must be documented following the <code>roxygen2</code> syntax directly in the source code<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>. When the functions are ready to use, they can be loaded (with a result similar to a call to <code>library(&lt;mypkg&gt;)</code> for a regularly installed package) via:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load_all</span>(pkg)</code></pre>
-<p>If the <code>roxygen2</code> tags are properly completed in the R source code, we can proceed to update the documentation (<code>.Rd</code> files, <code>DESCRIPTION</code> and <code>NAMESPACE</code>):</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">document</span>(pkg)</code></pre>
-<p>A series of checks can then be run, first on the examples, and then more generally on the package structure and content:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">run_examples</span>(pkg)
-<span class="kw">check</span>(pkg)</code></pre>
-<p>If problems such as “Error : extractFromURL.Rd: non-ASCII input and no declared encoding” arrise, we can use the <code>tools</code> package to identify which is (are) the faulty line(s):</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">showNonASCII</span>(<span class="kw">readLines</span>(<span class="kw">paste0</span>(pkg, <span class="st">&quot;/man/XXX.Rd&quot;</span>)))</code></pre>
-<p>For complex packages, it might be useful to prepare and run a battery of tests<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a>.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">test</span>(pkg)</code></pre>
-<p>Now don’t forget to write the changelog and news in the NEWS file<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a>. The PDF manual can be easily generated with the homebrew function <code>manual</code>, which is wrapper to <code>R CMD Rd2pdf</code>. The function needs the package name or path as input. Options include the target directory (by default, the package directory, which is where I’ll leave them), and two additional options to preview (<code>preview = TRUE</code> by default) or overwrite (<code>overwrite = FALSE</code> by default) the PDF.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">manual</span>(pkg)
-<span class="kw">manual</span>(pkg, <span class="dt">overwrite =</span> <span class="ot">TRUE</span>)</code></pre>
-<h2 id="installation-and-packaging"><a href="#installation-and-packaging">Installation and packaging</a></h2>
-<p>The package is now ready to install. The package can be directly installed locally:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install</span>(pkg)</code></pre>
-<p>To distribute the package, we need to prepare compressed archives of the package. A universal approach is to build a source package in a <code>.tar.gz</code> file. Note that if the packages already exist in the target directory, they will be overwritten. Binary packages can also be built if necessary (using <code>binary = TRUE</code>). For non-Windows users, there is a special function <code>built_win</code> that build Windows binaries using the web service <a href="http://win-builder.r-project.org/">Win-builder</a>. This service uses the e-mail address specified in the “Maintainer” field of the package’s <code>DESCRIPTION</code> file to send the result of the process.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">build</span>(pkg, <span class="dt">path =</span> <span class="st">&quot;src/contrib&quot;</span>)
-<span class="kw">build_win</span>(pkg)</code></pre>
-<p>If the checks are successful, the package can be released to CRAN (expect difficulties):</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">release</span>()</code></pre>
-<p>However, if we just want to publish the package in a user web repository, we just need a simple structure with the following elements:</p>
-<pre><code>R/
+URL: https://ase-research.org/basille/basr</code></pre>
+    <h2 id="r-code-and-documentation"><a href="#r-code-and-documentation">R code and documentation</a></h2>
+    <p>The R source code can then be placed in the <code>R</code> directory, with one file per function or a single R file with all the code <code>/R/mypkg-package.r</code>. All functions and data sets, as well as the package itself, must be documented following the <code>roxygen2</code> syntax directly in the source code<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>. When the functions are ready to use, they can be loaded (with a result similar to a call to <code>library(&lt;mypkg&gt;)</code> for a regularly installed package) via:</p>
+    <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load_all</span>(pkg)</code></pre>
+    <p>If the <code>roxygen2</code> tags are properly completed in the R source code, we can proceed to update the documentation (<code>.Rd</code> files, <code>DESCRIPTION</code> and <code>NAMESPACE</code>):</p>
+    <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">document</span>(pkg)</code></pre>
+    <p>A series of checks can then be run, first on the examples, and then more generally on the package structure and content:</p>
+    <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">run_examples</span>(pkg)
+        <span class="kw">check</span>(pkg)</code></pre>
+    <p>If problems such as “Error : extractFromURL.Rd: non-ASCII input and no declared encoding” arrise, we can use the <code>tools</code> package to identify which is (are) the faulty line(s):</p>
+    <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">showNonASCII</span>(<span class="kw">readLines</span>(<span class="kw">paste0</span>(pkg, <span class="st">&quot;/man/XXX.Rd&quot;</span>)))</code></pre>
+    <p>For complex packages, it might be useful to prepare and run a battery of tests<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a>.</p>
+    <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">test</span>(pkg)</code></pre>
+    <p>Now don’t forget to write the changelog and news in the NEWS file<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a>. The PDF manual can be easily generated with the homebrew function <code>manual</code>, which is wrapper to <code>R CMD Rd2pdf</code>. The function needs the package name or path as input. Options include the target directory (by default, the package directory, which is where I’ll leave them), and two additional options to preview (<code>preview = TRUE</code> by default) or overwrite (<code>overwrite = FALSE</code> by default) the PDF.</p>
+    <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">manual</span>(pkg)
+        <span class="kw">manual</span>(pkg, <span class="dt">overwrite =</span> <span class="ot">TRUE</span>)</code></pre>
+    <h2 id="installation-and-packaging"><a href="#installation-and-packaging">Installation and packaging</a></h2>
+    <p>The package is now ready to install. The package can be directly installed locally:</p>
+    <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install</span>(pkg)</code></pre>
+    <p>To distribute the package, we need to prepare compressed archives of the package. A universal approach is to build a source package in a <code>.tar.gz</code> file. Note that if the packages already exist in the target directory, they will be overwritten. Binary packages can also be built if necessary (using <code>binary = TRUE</code>). For non-Windows users, there is a special function <code>built_win</code> that build Windows binaries using the web service <a href="http://win-builder.r-project.org/">Win-builder</a>. This service uses the e-mail address specified in the “Maintainer” field of the package’s <code>DESCRIPTION</code> file to send the result of the process.</p>
+    <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">build</span>(pkg, <span class="dt">path =</span> <span class="st">&quot;src/contrib&quot;</span>)
+        <span class="kw">build_win</span>(pkg)</code></pre>
+    <p>If the checks are successful, the package can be released to CRAN (expect difficulties):</p>
+    <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">release</span>()</code></pre>
+    <p>However, if we just want to publish the package in a user web repository, we just need a simple structure with the following elements:</p>
+    <pre><code>R/
 +-- bin
 |   +-- windows
 |       +-- contrib
 |           +-- x.y
 +-- src
     +-- contrib</code></pre>
-<ul>
-<li><code>bin</code>: A directory which contains all binary packages. Windows binaries as .zip files are located at <code>bin/windows/contrib/x.y</code> for R versions <code>x.y.z</code>.</li>
-<li><code>src</code>: A directory which contains all source packages (current and older). Files are located at <code>src/contrib</code>.</li>
-</ul>
-<p>For the repository to work, there’s just the need for a file listing in a <code>PACKAGES</code> file, which is generated with the package <code>tools</code>:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write_PACKAGES</span>(<span class="dt">dir =</span> <span class="st">&quot;src/contrib&quot;</span>, <span class="dt">verbose =</span> <span class="ot">TRUE</span>)
-<span class="kw">write_PACKAGES</span>(<span class="dt">dir =</span> <span class="st">&quot;bin/windows/contrib/3.0.2&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;win.binary&quot;</span>,
-    <span class="dt">verbose =</span> <span class="ot">TRUE</span>)</code></pre>
-<p>The package directory can then be uploaded to the web repository. For the Ase repository, upload everything to http://ase-research.org/R/. Two pages need to be edited to take the changes into account: <code>/functions.shtml</code> (which lists the available functions/packages) and <code>/&lt;name&gt;/&lt;pkg&gt;/index.shtml</code> (which will give the details of the package).</p>
-<p>Finally, the package can be installed remotely on any Windows or Linux machine using:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;mypkg&quot;</span>, <span class="dt">repos =</span> <span class="st">&quot;http://ase-research.org/R/&quot;</span>)</code></pre>
-<p>If the previous command does not work, e.g. with other operating systems such as OS X, you can compile the source package with the command (note that <code>type = source</code> is the default setup on most Linux installations):</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;mypkg&quot;</span>, <span class="dt">repos =</span> <span class="st">&quot;http://ase-research.org/R/&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;source&quot;</span>)</code></pre>
-<h2 id="r-session-information"><a href="#r-session-information">R session information</a></h2>
-<pre><code>R version 3.0.2 (2013-09-25)
+    <ul>
+        <li><code>bin</code>: A directory which contains all binary packages. Windows binaries as .zip files are located at <code>bin/windows/contrib/x.y</code> for R versions <code>x.y.z</code>.</li>
+        <li><code>src</code>: A directory which contains all source packages (current and older). Files are located at <code>src/contrib</code>.</li>
+    </ul>
+    <p>For the repository to work, there’s just the need for a file listing in a <code>PACKAGES</code> file, which is generated with the package <code>tools</code>:</p>
+    <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write_PACKAGES</span>(<span class="dt">dir =</span> <span class="st">&quot;src/contrib&quot;</span>, <span class="dt">verbose =</span> <span class="ot">TRUE</span>)
+        <span class="kw">write_PACKAGES</span>(<span class="dt">dir =</span> <span class="st">&quot;bin/windows/contrib/3.0.2&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;win.binary&quot;</span>,
+        <span class="dt">verbose =</span> <span class="ot">TRUE</span>)</code></pre>
+    <p>The package directory can then be uploaded to the web repository. For the Ase repository, upload everything to https://ase-research.org/R/. Two pages need to be edited to take the changes into account: <code>/functions.shtml</code> (which lists the available functions/packages) and <code>/&lt;name&gt;/&lt;pkg&gt;/index.shtml</code> (which will give the details of the package).</p>
+    <p>Finally, the package can be installed remotely on any Windows or Linux machine using:</p>
+    <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;mypkg&quot;</span>, <span class="dt">repos =</span> <span class="st">&quot;https://ase-research.org/R/&quot;</span>)</code></pre>
+    <p>If the previous command does not work, e.g. with other operating systems such as OS X, you can compile the source package with the command (note that <code>type = source</code> is the default setup on most Linux installations):</p>
+    <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;mypkg&quot;</span>, <span class="dt">repos =</span> <span class="st">&quot;https://ase-research.org/R/&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;source&quot;</span>)</code></pre>
+    <h2 id="r-session-information"><a href="#r-session-information">R session information</a></h2>
+    <pre><code>R version 3.0.2 (2013-09-25)
 Platform: x86_64-pc-linux-gnu (64-bit)
 
 attached base packages:

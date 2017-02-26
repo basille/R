@@ -23,16 +23,16 @@ pandoc("IntroR.md")
 > A new statistic proves that 73\% of all statistics are pure inventions. <cite>J.J.A. Weber</cite>
 
 This document provides the basis to use the <img
-src="http://www.r-project.org/Rlogo.jpg" alt="R" height="16"
+src="https://www.r-project.org/Rlogo.jpg" alt="R" height="16"
 width="21"> software. The first section is generic, and will
 demonstrate the general use of the software, the different data
 types[^fn1] and the available resources. The second section explore
 the graphical capabilities of the software. Finally, the document
 presents an exploration of the analysis of variance. For more details
-about <img src="http://www.r-project.org/Rlogo.jpg" alt="R"
+about <img src="https://www.r-project.org/Rlogo.jpg" alt="R"
 height="16" width="21">, see the
-[Introduction to R](http://cran.r-project.org/doc/manuals/R-intro.pdf). The
-<img src="http://www.r-project.org/Rlogo.jpg" alt="R" height="16"
+[Introduction to R](https://cran.r-project.org/doc/manuals/R-intro.pdf). The
+<img src="https://www.r-project.org/Rlogo.jpg" alt="R" height="16"
 width="21"> code used in this document can be found [here](IntroR.R).
 
 [^fn1]: Data importation is not covered in this document.
@@ -42,30 +42,30 @@ width="21"> code used in this document can be found [here](IntroR.R).
 
 ### The R environment
 
-<img src="http://www.r-project.org/Rlogo.jpg" alt="R" height="16"
+<img src="https://www.r-project.org/Rlogo.jpg" alt="R" height="16"
 width="21"> is a statistical environment based on a command-line
-language.  <img src="http://www.r-project.org/Rlogo.jpg" alt="R"
+language.  <img src="https://www.r-project.org/Rlogo.jpg" alt="R"
 height="16" width="21"> is a free software. You can thus *freely* use
 it[^fn2], *freely* distribute it, and *freely* modify and redistribute
 it.
 
-[^fn2]: Available at: [http://www.r-project.org](http://www.r-project.org)
+[^fn2]: Available at: [https://www.r-project.org](https://www.r-project.org)
 
 On Windows, if we launch the software, a window opens with a console,
 in which we can type in commands. A few menus are available, although
 they are rarely used. A look at `Help > Console` might help.
 
 I strongly recommend, however, to use RStudio[^fn3], a free <img
-src="http://www.r-project.org/Rlogo.jpg" alt="R" height="16"
+src="https://www.r-project.org/Rlogo.jpg" alt="R" height="16"
 width="21"> development environment. RStudio makes it easier to manage
 code, objects, graphs, and also proposes advanced features, such as
 the support of R Markdown.
 
-[^fn3]: Available at: [http://www.rstudio.com/](http://www.rstudio.com/)
+[^fn3]: Available at: [https://www.rstudio.com/](https://www.rstudio.com/)
 
 
 To start with, we check what is the working directory in which <img
-src="http://www.r-project.org/Rlogo.jpg" alt="R" height="16"
+src="https://www.r-project.org/Rlogo.jpg" alt="R" height="16"
 width="21"> started:
 
 ```{r getwd, eval = FALSE}
@@ -175,7 +175,7 @@ save.image(file = "Session.RData")
 
 ### Need help? 
 
-<img src="http://www.r-project.org/Rlogo.jpg" alt="R" height="16"
+<img src="https://www.r-project.org/Rlogo.jpg" alt="R" height="16"
 width="21"> provides a bunch of utilities to find answers: 
 
 ```{r help, eval = FALSE, tidy = FALSE}
@@ -197,20 +197,20 @@ to search in on-line resources (mailing lists, help files, other
 documents).
 
 As of today, the best on-line resource to find answers related to a
-<img src="http://www.r-project.org/Rlogo.jpg" alt="R" height="16"
-width="21"> problem is [Rseek](http://www.rseek.org/), which is the
+<img src="https://www.r-project.org/Rlogo.jpg" alt="R" height="16"
+width="21"> problem is [Rseek](http://rseek.org/), which is the
 equivalent of `RSiteSearch` with a very detailed and user-friendly
 output.
 
 
 ## Graphics
 
-<img src="http://www.r-project.org/Rlogo.jpg" alt="R" height="16"
+<img src="https://www.r-project.org/Rlogo.jpg" alt="R" height="16"
 width="21"> has truly amazing capabilities when it comes to
 graphics. In this section, I will review only simple ones, using base
 functions. For more advanced users, I strongly recommend to have a
 look at the `ggplot2` package[^fn6], which implements the grammar of
-graphics in <img src="http://www.r-project.org/Rlogo.jpg" alt="R"
+graphics in <img src="https://www.r-project.org/Rlogo.jpg" alt="R"
 height="16" width="21">.
 
 [^fn6]: See here: [http://ggplot2.org/](http://ggplot2.org/)
@@ -311,7 +311,7 @@ unclass(df$C)
 
 Let's have a look at one of the most famous data set from statistics:
 the Fisher's (or Anderson's) iris data set. This data set is directly
-available in <img src="http://www.r-project.org/Rlogo.jpg" alt="R"
+available in <img src="https://www.r-project.org/Rlogo.jpg" alt="R"
 height="16" width="21"> in the object `iris`. Let's check what kind of
 object it is:
 
