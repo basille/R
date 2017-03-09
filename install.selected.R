@@ -74,6 +74,7 @@ install.packages(c(
     "colorRamps",        # Builds color tables
     "cowplot",           # Streamlined Plot Theme and Plot Annotations for 'ggplot2'
     "ggalt",             # Extra Coordinate Systems, Geoms, Statistical Transformations, Scales & Fonts for 'ggplot2'
+    "ggforce",           # Accelerating 'ggplot2'
     "ggfortify",         # Data Visualization Tools for Statistical Analysis Results
     "gridExtra",         # Miscellaneous Functions for "Grid" Graphics
     "hexbin",            # Hexagonal Binning Routines
