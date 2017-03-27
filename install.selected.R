@@ -87,6 +87,7 @@ packages.list <- c(
     "SDMTools",          # Species Distribution Modelling Tools: Tools for processing data associated with species distribution modelling exercises
 
     ## Other packages
+    "bookdown",          # Authoring Books and Technical Documents with R Markdown
     "cowsay",            # Messages, Warnings, Strings with Ascii Animals
     "devtools",          # Tools to Make Developing R Packages Easier
     "formatR",           # Format R Code Automatically
