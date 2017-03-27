@@ -1,41 +1,23 @@
-## Install CTV (CRAN Task Views)
-install.packages("ctv")
-library("ctv")
+packages.list <- c(
 
-## Install Spatial Task View (core)
-## https://cran.r-project.org/web/views/Spatial.html
-install.views("Spatial", coreOnly = TRUE)
-## From time to time, needs the following to install new packages
-## added to the view:
-## update.views("Spatial", coreOnly = TRUE)
-
-## Currently includes (2016-11-27):
-## - classInt: Choose Univariate Class Intervals
-## - DCluster: Functions for the Detection of Spatial Clusters of Diseases
-## - deldir: Delaunay Triangulation and Dirichlet (Voronoi) Tessellation
-## - dggridR: Discrete Global Grids for R
-## - geoR: Analysis of Geostatistical Data
-## - gstat: Spatial and Spatio-Temporal Geostatistical Modelling, Prediction and Simulation
-## - maptools: Tools for Reading and Handling Spatial Objects
-## - RandomFields: Simulation and Analysis of Random Fields
-## - raster: Geographic Data Analysis and Modeling
-## - RColorBrewer: ColorBrewer Palettes
-## - rgdal: Bindings for the Geospatial Data Abstraction Library
-## - rgeos: Interface to Geometry Engine - Open Source (GEOS)
-## - sf: Simple Features for R
-## - sp: Classes and Methods for Spatial Data
-## - spacetime: Classes and Methods for Spatio-Temporal Data
-## - spatstat: Spatial Point Pattern Analysis, Model-Fitting, Simulation, Tests
-## - spdep: Spatial Dependence: Weighting Schemes, Statistics and Models
-## - splancs: Spatial and Space-Time Point Pattern Analysis
-
-install.packages(c(
-
-    ## Other spatial packages
+    ## Spatial packages https://cran.r-project.org/web/views/Spatial.html
+    "gstat",             # Spatial and Spatio-Temporal Geostatistical Modelling, Prediction and Simulation
+    "leaflet",           # Create Interactive Web Maps with the JavaScript 'Leaflet' Library
+    "maptools",         # Tools for Reading and Handling Spatial Objects
+    "RandomFields",     # Simulation and Analysis of Random Fields
+    "raster",           # Geographic Data Analysis and Modeling
+    "rasterVis",         # Visualization Methods for Raster Data
+    "RColorBrewer",     # ColorBrewer Palettes
+    "rgdal",            # Bindings for the Geospatial Data Abstraction Library
+    "rgeos",            # Interface to Geometry Engine - Open Source (GEOS)
     "rworldmap",         # Mapping Global Data
     "rworldxtra",        # Country boundaries at high resolution
-    "leaflet",           # Create Interactive Web Maps with the JavaScript 'Leaflet' Library
-    "rasterVis",         # Visualization Methods for Raster Data
+    ## "sf",               # Simple Features for R
+    "sp",               # Classes and Methods for Spatial Data
+    "spacetime",        # Classes and Methods for Spatio-Temporal Data
+    "spatstat",         # Spatial Point Pattern Analysis, Model-Fitting, Simulation, Tests
+    "spdep",            # Spatial Dependence: Weighting Schemes, Statistics and Models
+    "splancs",          # Spatial and Space-Time Point Pattern Analysis
 
     ## adehabitat, rpostgis and friends
     "adehabitatHS",      # Analysis of Habitat Selection by Animals
@@ -112,8 +94,12 @@ install.packages(c(
     "knitr",             # A General-Purpose Package for Dynamic Report Generation in R
     "rmarkdown",         # Dynamic Documents for R
     "roxygen2",          # In-Source Documentation for R
-    "shiny",             # Web Application Framework for R
-    ))
+    "shiny"             # Web Application Framework for R
+    )
+
+packages.new <- packages.list[!(packages.list %in% installed.packages()[,"Package"])]
+if (length(packages.new))
+    install.packages(packages.new)
 
 ## MabLab packages on GitHub
 library("devtools")
