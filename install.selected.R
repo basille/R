@@ -105,6 +105,6 @@ if (length(packages.new))
 library("devtools")
 install_github(c(
     "basille/basr",
-    "basille/hab",
-    "basille/seasonality"
+    "basille/hab"
+    ## "basille/seasonality"
 ))
