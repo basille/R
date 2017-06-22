@@ -90,6 +90,7 @@ packages.list <- c(
 
     ## Other packages
     "bookdown",          # Authoring Books and Technical Documents with R Markdown
+    "charlatan",         # Make Fake Data
     "cowsay",            # Messages, Warnings, Strings with Ascii Animals
     "devtools",          # Tools to Make Developing R Packages Easier
     "formatR",           # Format R Code Automatically
