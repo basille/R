@@ -1,6 +1,7 @@
 packages.list <- c(
 
     ## Spatial packages https://cran.r-project.org/web/views/Spatial.html
+    "autoimage",        # Multiple Heat Maps for Projected Coordinates
     "gstat",             # Spatial and Spatio-Temporal Geostatistical Modelling, Prediction and Simulation
     "leaflet",           # Create Interactive Web Maps with the JavaScript 'Leaflet' Library
     "maptools",         # Tools for Reading and Handling Spatial Objects
@@ -63,6 +64,7 @@ packages.list <- c(
     "hexbin",            # Hexagonal Binning Routines
     "hrbrthemes",        # Additional Themes, Theme Components and Utilities for 'ggplot2'
     "factoextra",        # Extract and Visualize the Results of Multivariate Data Analyses
+    "tweenr"             # Interpolate Data for Smooth Animations
     "viridis",           # Default Color Maps from 'matplotlib'
 
     ## Data management
@@ -95,7 +97,8 @@ packages.list <- c(
     "knitr",             # A General-Purpose Package for Dynamic Report Generation in R
     "rmarkdown",         # Dynamic Documents for R
     "roxygen2",          # In-Source Documentation for R
-    "shiny"             # Web Application Framework for R
+    "shiny",             # Web Application Framework for R
+    "tigris"             # Download TIGER/Line shapefiles from the United States Census Bureau and load into R as 'SpatialDataFrame' or 'sf' objects.
     )
 
 packages.new <- packages.list[!(packages.list %in% installed.packages()[,"Package"])]

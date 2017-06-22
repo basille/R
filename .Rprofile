@@ -5,24 +5,24 @@ options(repos = c(CRAN = "https://mirrors.nics.utk.edu/cran/"),
     papersize = "letter", menu.graphics = FALSE, max.print = 999)
 
 ## Silently load 'basr' and 'cowplot' together with default packages
-options(defaultPackages = c(getOption("defaultPackages"), "basr",
-   "cowplot"))
+options(defaultPackages = c(getOption("defaultPackages"), "basr"))
 ### Load packages at the start of R if the package list exists
 basr:::.loadpkglist()
+### Fix bug #63: https://github.com/wilkelab/cowplot/issues/63
+#utils::assignInNamespace("theme_nothing", function(){
+#   theme_void() +
+#   theme(panel.grid.major = element_blank())
+#}, "cowplot")
 ### Change in default cowplot/ggplot2 theme: Major grid lines by
 ### default [doesn't work in .Rprofile!]
+#require("ggplot2", quietly = TRUE)
 #ggplot2::theme_update(panel.grid.major =
 #    ggplot2::element_line(colour = "grey90", size = 0.2))
-### Fix bug #63: https://github.com/wilkelab/cowplot/issues/63
-utils::assignInNamespace("theme_nothing", function(){
-   theme_void() +
-   theme(panel.grid.major = element_blank())
-}, "cowplot")
 
 
 ### Interactive sessions get a fortune cookie (needs cosway and
 ### fortunes packages)
-if (interactive() & require(cowsay, quietly = TRUE))
+if (interactive() & require("cowsay", quietly = TRUE))
     cowsay::say(what = "fortune",
                 by = sample(names(animals)[!(names(animals) %in%
         c("shortcat", "longcat", "fish", "signbunny", "stretchycat",
