@@ -96,6 +96,7 @@ packages.list <- c(
     "formatR",           # Format R Code Automatically
     "Hmisc",             # Harrell Miscellaneous
     "knitr",             # A General-Purpose Package for Dynamic Report Generation in R
+    "lintr",             # Static R Code Analysis
     "rmarkdown",         # Dynamic Documents for R
     "roxygen2",          # In-Source Documentation for R
     "rticles",           # Article Formats for R Markdown
