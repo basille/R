@@ -80,6 +80,7 @@ packages.list <- c(
     "CircStats",         # Circular Statistics, from "Topics in circular Statistics" (2001)
     "coxme",             # Mixed Effects Cox Models
     "dismo",             # Species Distribution Modeling
+    "ecospat",           # Spatial Ecology Miscellaneous Methods
     "lme4",              # Linear Mixed-Effects Models using 'Eigen' and S4
     "lsmeans",           # Least-Squares Means
     "MuMIn",             # Multi-Model Inference
