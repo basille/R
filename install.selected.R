@@ -92,8 +92,10 @@ packages.list <- c(
     ## Other packages
     "bookdown",          # Authoring Books and Technical Documents with R Markdown
     "charlatan",         # Make Fake Data
+    "constants",         # Reference on Constants, Units and Uncertainty
     "cowsay",            # Messages, Warnings, Strings with Ascii Animals
     "devtools",          # Tools to Make Developing R Packages Easier
+    "errors",            # Error Propagation for R Vectors
     "formatR",           # Format R Code Automatically
     "Hmisc",             # Harrell Miscellaneous
     "knitr",             # A General-Purpose Package for Dynamic Report Generation in R
@@ -102,7 +104,8 @@ packages.list <- c(
     "roxygen2",          # In-Source Documentation for R
     "rticles",           # Article Formats for R Markdown
     "shiny",             # Web Application Framework for R
-    "tigris"             # Download TIGER/Line shapefiles from the United States Census Bureau and load into R as 'SpatialDataFrame' or 'sf' objects.
+    "tigris", # Download TIGER/Line shapefiles from the United States Census Bureau and load into R as 'SpatialDataFrame' or 'sf' objects
+    "units"              # Measurement Units for R Vectors
     )
 
 packages.new <- packages.list[!(packages.list %in% installed.packages()[,"Package"])]
