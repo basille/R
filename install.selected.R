@@ -90,6 +90,7 @@ packages.list <- c(
     "SDMTools",          # Species Distribution Modelling Tools: Tools for processing data associated with species distribution modelling exercises
 
     ## Other packages
+    "blogdown",          # Create Blogs and Websites with R Markdown
     "bookdown",          # Authoring Books and Technical Documents with R Markdown
     "charlatan",         # Make Fake Data
     "constants",         # Reference on Constants, Units and Uncertainty
@@ -113,9 +114,9 @@ if (length(packages.new))
     install.packages(packages.new)
 
 ## MabLab packages on GitHub
-library("devtools")
-install_github(c(
-    "basille/basr",
-    "basille/hab"
-    ## "basille/seasonality"
-))
+## library("devtools")
+## install_github(c(
+##     "basille/basr",
+##     "basille/hab"
+##     ## "basille/seasonality"
+## ))

@@ -1,0 +1,16 @@
+# Ignore everything but:
+# R.css
+# README.md
+# TODO
+# install.selected.R
+# rmd.css
+# writePackage.Rmd
+# intro/
+/*
+!/R.css
+!/README.md
+!/TODO
+!/install.selected.R
+!/rmd.css
+!/writePackage.Rmd
+!/intro/
