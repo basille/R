@@ -105,6 +105,7 @@ packages.list <- c(
     "roxygen2",          # In-Source Documentation for R
     "rticles",           # Article Formats for R Markdown
     "shiny",             # Web Application Framework for R
+    "sudokuAlt",         # Tools for Making and Spoiling Sudoku Games
     "tigris", # Download TIGER/Line shapefiles from the United States Census Bureau and load into R as 'SpatialDataFrame' or 'sf' objects
     "units"              # Measurement Units for R Vectors
     )
