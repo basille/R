@@ -2,7 +2,9 @@
 ## options(repos = c(CRAN = "http://cran.r-project.org/"),
 #options(repos = c(CRAN = " http://cran.rstudio.com/"),
 options(repos = c(CRAN = "https://mirrors.nics.utk.edu/cran/"),
-    papersize = "letter", menu.graphics = FALSE, max.print = 999)
+    papersize = "letter", menu.graphics = FALSE, max.print = 999,
+    Ncpus = 3                           # To speed up package installation using multiple cores
+)
 
 ## Silently load 'basr' and 'cowplot' together with default packages
 options(defaultPackages = c(getOption("defaultPackages"), "basr"))
