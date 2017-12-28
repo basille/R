@@ -2,6 +2,5 @@ R stuff
 =======
 
 * Config files: `.Renviron` & `.Rprofile`;
-* Introduction to R;
-* Write packages with R;
+* Selection of packages to install: `install.selected.R`
 * CSS files for R code within pages + knitr files.
