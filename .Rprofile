@@ -1,30 +1,32 @@
 ### Options: CRAN mirror, papersize (letter), no tcltk, and max print
-## options(repos = c(CRAN = "http://cran.r-project.org/"),
-#options(repos = c(CRAN = " http://cran.rstudio.com/"),
-options(repos = c(CRAN = "https://mirrors.nics.utk.edu/cran/"),
-    papersize = "letter", menu.graphics = FALSE, max.print = 999,
-    Ncpus = 3                           # To speed up package installation using multiple cores
+options(
+    ## Use closest CRAN mirror. Alternative mirrors:
+    ## repos = c(CRAN = "http://cran.r-project.org/"),
+    ## repos = c(CRAN = " http://cran.rstudio.com/"),
+    repos = c(CRAN = "https://mirrors.nics.utk.edu/cran/"),
+    ## Paper size is letter
+    papersize = "letter",
+    ## No graphic menu with Tcl/Tk
+    menu.graphics = FALSE,
+    ## Increase amount of information printed on screen (default is
+    ## 99)
+    max.print = 999,
+    ## Use multiple cores to speed up package installation
+    Ncpus = 3
 )
 
-## Silently load 'basr' and 'cowplot' together with default packages
-options(defaultPackages = c(getOption("defaultPackages"), "basr"))
 ### Load packages at the start of R if the package list exists
-basr:::.loadpkglist()
-### Fix bug #63: https://github.com/wilkelab/cowplot/issues/63
-#utils::assignInNamespace("theme_nothing", function(){
-#   theme_void() +
-#   theme(panel.grid.major = element_blank())
-#}, "cowplot")
-### Change in default cowplot/ggplot2 theme: Major grid lines by
-### default [doesn't work in .Rprofile!]
-#require("ggplot2", quietly = TRUE)
-#ggplot2::theme_update(panel.grid.major =
-#    ggplot2::element_line(colour = "grey90", size = 0.2))
+if (interactive() & suppressPackageStartupMessages(require("basr",
+    quietly = TRUE))) {
+    basr:::.loadpkglist()
+} else (message("The package basr is not installed. Install it with:
 
+devtools::install_github(\"basille/basr\")"))
 
 ### Interactive sessions get a fortune cookie (needs cosway and
 ### fortunes packages)
-if (interactive() & require("cowsay", quietly = TRUE))
+if (interactive() & require("cowsay", quietly = TRUE)
+)
     cowsay::say(what = "fortune",
                 by = sample(names(animals)[!(names(animals) %in%
         c("shortcat", "longcat", "fish", "signbunny", "stretchycat",
@@ -41,19 +43,3 @@ if (interactive() & require("cowsay", quietly = TRUE))
 ## Don't work:
 ## [1] "shortcat"    "longcat"     "fish"        "signbunny"   "stretchycat"
 ## [6] "anxiouscat"  "longtailcat" "grumpycat"   "mushroom"
-
-
-## ### Create my own environment: .myenv
-## ### Pour lister ses éléments : ls(.myenv)
-## .myenv <- new.env()
-## ### Load in .myenv all .R functions in the R-site folder
-## options(keep.source = FALSE)
-## lf <- grep(".R$", dir("~/.R-site/"), value = TRUE)
-## invisible(lapply(1:length(lf), function(i)
-##     sys.source(paste("~/.R-site/", lf[i], sep="/"), envir = .myenv)))
-## rm(lf)
-## ## Attach .myenv to allow access to these functions
-## attach(.myenv)
-
-### Completion in an inferior R buffer (names & paths)
-## utils::rc.settings(file = TRUE)
