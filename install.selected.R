@@ -72,7 +72,6 @@ packages.list <- c(
     "fancycut",          # A Fancy Version of 'base::cut'
     "foreign",           # Read Data Stored by Minitab, S, SAS, SPSS, Stata, Systat, Weka, dBase, ...
     "padr",              # Quickly Get Datetime Data Ready for Analysis
-    "reshape2",          # Flexibly Reshape Data: A Reboot of the Reshape Package
     "scales",            # Scale Functions for Visualization
     "units",             # Measurement Units for R Vectors
 
@@ -105,6 +104,7 @@ packages.list <- c(
     "roxygen2",          # In-Source Documentation for R
     "rticles",           # Article Formats for R Markdown
     "shiny",             # Web Application Framework for R
+    "styler",            # Non-Invasive Pretty Printing of R Code
     "sudokuAlt",         # Tools for Making and Spoiling Sudoku Games
     "tigris", # Download TIGER/Line shapefiles from the United States Census Bureau and load into R as 'SpatialDataFrame' or 'sf' objects
     "units"              # Measurement Units for R Vectors
