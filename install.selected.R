@@ -100,13 +100,14 @@ packages.list <- c(
     "Hmisc",             # Harrell Miscellaneous
     "knitr",             # A General-Purpose Package for Dynamic Report Generation in R
     "lintr",             # Static R Code Analysis
+    "printr",            # Automatically Print R Objects to Appropriate Formats According to the 'knitr' Output Format
     "rmarkdown",         # Dynamic Documents for R
     "roxygen2",          # In-Source Documentation for R
     "rticles",           # Article Formats for R Markdown
     "shiny",             # Web Application Framework for R
     "styler",            # Non-Invasive Pretty Printing of R Code
     "sudokuAlt",         # Tools for Making and Spoiling Sudoku Games
-    "tigris", # Download TIGER/Line shapefiles from the United States Census Bureau and load into R as 'SpatialDataFrame' or 'sf' objects
+    "tigris",            # Download TIGER/Line shapefiles from the United States Census Bureau and load into R as 'SpatialDataFrame' or 'sf' objects
     "units"              # Measurement Units for R Vectors
     )
 
