@@ -73,6 +73,7 @@ packages.list <- c(
     "foreign",           # Read Data Stored by Minitab, S, SAS, SPSS, Stata, Systat, Weka, dBase, ...
     "padr",              # Quickly Get Datetime Data Ready for Analysis
     "scales",            # Scale Functions for Visualization
+    "tibbletime",        # Time Aware Tibbles
     "units",             # Measurement Units for R Vectors
 
     ## Modeling
