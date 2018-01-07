@@ -109,6 +109,7 @@ packages.list <- c(
     "styler",            # Non-Invasive Pretty Printing of R Code
     "sudokuAlt",         # Tools for Making and Spoiling Sudoku Games
     "tigris",            # Download TIGER/Line shapefiles from the United States Census Bureau and load into R as 'SpatialDataFrame' or 'sf' objects
+    "tint",               # 'tint' is not 'Tufte'
     "units"              # Measurement Units for R Vectors
     )
 
