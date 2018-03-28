@@ -56,6 +56,7 @@ packages.list <- c(
     "Cairo",             # R graphics device using cairo graphics library for creating high-quality bitmap (PNG, JPEG, TIFF), vector (PDF, SVG, PostScript) and display (X11 and Win32) output
     "colorRamps",        # Builds color tables
     "cowplot",           # Streamlined Plot Theme and Plot Annotations for 'ggplot2'
+    "extrafont",         # Tools for using fonts
     "ggalt",             # Extra Coordinate Systems, Geoms, Statistical Transformations, Scales & Fonts for 'ggplot2'
     "ggforce",           # Accelerating 'ggplot2'
     "ggfortify",         # Data Visualization Tools for Statistical Analysis Results
@@ -117,9 +118,13 @@ packages.new <- packages.list[!(packages.list %in% installed.packages()[,"Packag
 if (length(packages.new))
     install.packages(packages.new)
 
+
+## Other packages on GitHub
+## devtools::install_github("tidyverse/ggplot2") # ggplot2 with sf capabilities
+## devtools::install_github("gadenbuie/ggpomological") # Pomological Colors
+
 ## MabLab packages on GitHub
-## library("devtools")
-## install_github(c(
+## devtools::install_github(c(
 ##     "basille/basr",
 ##     "basille/hab"
 ##     ## "basille/seasonality"
