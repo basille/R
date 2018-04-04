@@ -122,6 +122,7 @@ if (length(packages.new))
 ## Other packages on GitHub
 ## devtools::install_github("tidyverse/ggplot2") # ggplot2 with sf capabilities
 ## devtools::install_github("gadenbuie/ggpomological") # Pomological Colors
+## devtools::install_github('cttobin/ggthemr') # ggplot2 themes (for posters/presentations)
 
 ## MabLab packages on GitHub
 ## devtools::install_github(c(
