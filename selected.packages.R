@@ -1,19 +1,20 @@
+## Packages on CRAN
 packages.list <- c(
 
     ## Spatial packages https://cran.r-project.org/web/views/Spatial.html
     "autoimage",        # Multiple Heat Maps for Projected Coordinates
-    "gstat",             # Spatial and Spatio-Temporal Geostatistical Modelling, Prediction and Simulation
-    "leaflet",           # Create Interactive Web Maps with the JavaScript 'Leaflet' Library
+    "gstat",            # Spatial and Spatio-Temporal Geostatistical Modelling, Prediction and Simulation
+    "leaflet",          # Create Interactive Web Maps with the JavaScript 'Leaflet' Library
     "maptools",         # Tools for Reading and Handling Spatial Objects
     "RandomFields",     # Simulation and Analysis of Random Fields
     "raster",           # Geographic Data Analysis and Modeling
-    "rasterVis",         # Visualization Methods for Raster Data
+    "rasterVis",        # Visualization Methods for Raster Data
     "RColorBrewer",     # ColorBrewer Palettes
     "rgdal",            # Bindings for the Geospatial Data Abstraction Library
     "rgeos",            # Interface to Geometry Engine - Open Source (GEOS)
-    "rworldmap",         # Mapping Global Data
-    "rworldxtra",        # Country boundaries at high resolution
-    ## "sf",               # Simple Features for R
+    "rworldmap",        # Mapping Global Data
+    "rworldxtra",       # Country boundaries at high resolution
+    "sf",               # Simple Features for R
     "sp",               # Classes and Methods for Spatial Data
     "spacetime",        # Classes and Methods for Spatio-Temporal Data
     "spatstat",         # Spatial Point Pattern Analysis, Model-Fitting, Simulation, Tests
@@ -23,6 +24,7 @@ packages.list <- c(
     ## adehabitat, rpostgis and friends
     "adehabitatHS",      # Analysis of Habitat Selection by Animals
     "move",              # Visualizing and Analyzing Animal Track Data
+    "rpostgis",          # R Interface to a 'PostGIS' Database
     "rpostgisLT",        # Managing Animal Movement Data with 'PostGIS' and R
 
     ## Tidyverse
@@ -89,6 +91,7 @@ packages.list <- c(
     "randomForest",      # Breiman and Cutler's Random Forests for Classification and Regression
     "RMark",             # R Code for Mark Analysis
     "SDMTools",          # Species Distribution Modelling Tools: Tools for processing data associated with species distribution modelling exercises
+    "visreg",            # Visualization of Regression Models
 
     ## Other packages
     "blogdown",          # Create Blogs and Websites with R Markdown
@@ -110,23 +113,29 @@ packages.list <- c(
     "styler",            # Non-Invasive Pretty Printing of R Code
     "sudokuAlt",         # Tools for Making and Spoiling Sudoku Games
     "tigris",            # Download TIGER/Line shapefiles from the United States Census Bureau and load into R as 'SpatialDataFrame' or 'sf' objects
-    "tint",               # 'tint' is not 'Tufte'
+    "tint",              # 'tint' is not 'Tufte'
     "units"              # Measurement Units for R Vectors
     )
 
+## Installation of new packages (i.e. not previously installed):
 packages.new <- packages.list[!(packages.list %in% installed.packages()[,"Package"])]
 if (length(packages.new))
     install.packages(packages.new)
 
 
-## Other packages on GitHub
-## devtools::install_github("tidyverse/ggplot2") # ggplot2 with sf capabilities
-## devtools::install_github("gadenbuie/ggpomological") # Pomological Colors
-## devtools::install_github('cttobin/ggthemr') # ggplot2 themes (for posters/presentations)
 
-## MabLab packages on GitHub
-## devtools::install_github(c(
-##     "basille/basr",
-##     "basille/hab"
-##     ## "basille/seasonality"
-## ))
+## Packages on GitHub
+pkgGH <- data.frame(source = c(
+    "basille/basr",
+    "basille/hab",
+    ## "basille/seasonality",
+    "tidyverse/ggplot2",                # ggplot2 with sf capabilities
+    "gadenbuie/ggpomological",          # Pomological Colors
+    "cttobin/ggthemr"                   # ggplot2 themes (for posters/presentations)
+))
+pkgGH$name <- unlist(lapply(strsplit(pkgGH.list, "/"), function(li) li[2]))
+
+## Installation of new packages (i.e. not previously installed):
+pkgGH.new <- pkgGH$source[!(pkgGH$name %in% installed.packages()[,"Package"])]
+if (length(pkgGH.new))
+    devtools::install_github(pkgGH.new)
