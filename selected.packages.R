@@ -102,6 +102,7 @@ packages.list <- c(
     "devtools",          # Tools to Make Developing R Packages Easier
     "errors",            # Error Propagation for R Vectors
     "formatR",           # Format R Code Automatically
+    "goodpractice",      # Advice on R Package Building
     "Hmisc",             # Harrell Miscellaneous
     "knitr",             # A General-Purpose Package for Dynamic Report Generation in R
     "lintr",             # Static R Code Analysis
