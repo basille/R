@@ -126,17 +126,18 @@ if (length(packages.new))
 
 
 ## Packages on GitHub
-pkgGH <- data.frame(source = c(
+pkgGH.list <- data.frame(source = c(
     "basille/basr",
     "basille/hab",
     ## "basille/seasonality",
     "tidyverse/ggplot2",                # ggplot2 with sf capabilities
     "gadenbuie/ggpomological",          # Pomological Colors
-    "cttobin/ggthemr"                   # ggplot2 themes (for posters/presentations)
+    "cttobin/ggthemr",                  # ggplot2 themes (for posters/presentations)
+    "cloudyr/limer"                     # A LimeSurvey R client
 ))
-pkgGH$name <- unlist(lapply(strsplit(pkgGH.list, "/"), function(li) li[2]))
+pkgGH.list$name <- unlist(lapply(strsplit(as.character(pkgGH.list$source), "/"), function(li) li[2]))
 
 ## Installation of new packages (i.e. not previously installed):
-pkgGH.new <- pkgGH$source[!(pkgGH$name %in% installed.packages()[,"Package"])]
+pkgGH.new <- pkgGH.list$source[!(pkgGH.list$name %in% installed.packages()[,"Package"])]
 if (length(pkgGH.new))
-    devtools::install_github(pkgGH.new)
+   devtools::install_github(pkgGH.new)
