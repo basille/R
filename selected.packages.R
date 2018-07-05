@@ -132,6 +132,7 @@ pkgGH.list <- data.frame(source = c(
     ## "basille/seasonality",
     "tidyverse/ggplot2",                # ggplot2 with sf capabilities
     "gadenbuie/ggpomological",          # Pomological Colors
+    "xvrdm/ggrough",                    # converts ggplot2 plots to sketchy charts using rough.js
     "cttobin/ggthemr",                  # ggplot2 themes (for posters/presentations)
     "cloudyr/limer"                     # A LimeSurvey R client
 ))
