@@ -106,6 +106,7 @@ packages.list <- c(
     "Hmisc",             # Harrell Miscellaneous
     "knitr",             # A General-Purpose Package for Dynamic Report Generation in R
     "lintr",             # Static R Code Analysis
+    "packagefinder",     # Comfortable Search for R Packages on CRAN (requires R 3.4.0)
     "printr",            # Automatically Print R Objects to Appropriate Formats According to the 'knitr' Output Format
     "rmarkdown",         # Dynamic Documents for R
     "roxygen2",          # In-Source Documentation for R
