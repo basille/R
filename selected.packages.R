@@ -135,7 +135,8 @@ pkgGH.list <- data.frame(source = c(
     "gadenbuie/ggpomological",          # Pomological Colors
     "xvrdm/ggrough",                    # converts ggplot2 plots to sketchy charts using rough.js
     "cttobin/ggthemr",                  # ggplot2 themes (for posters/presentations)
-    "cloudyr/limer"                     # A LimeSurvey R client
+    "cloudyr/limer",                    # A LimeSurvey R client
+    "tylermorganwall/rayshader"         # Producing hillshaded maps of elevation matrices with raytracing
 ))
 pkgGH.list$name <- unlist(lapply(strsplit(as.character(pkgGH.list$source), "/"), function(li) li[2]))
 
