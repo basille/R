@@ -3,6 +3,7 @@ packages.list <- c(
 
     ## Spatial packages https://cran.r-project.org/web/views/Spatial.html
     "autoimage",        # Multiple Heat Maps for Projected Coordinates
+    "ggspatial",        # Spatial Data Framework for ggplot2
     "gstat",            # Spatial and Spatio-Temporal Geostatistical Modelling, Prediction and Simulation
     "leaflet",          # Create Interactive Web Maps with the JavaScript 'Leaflet' Library
     "maptools",         # Tools for Reading and Handling Spatial Objects
@@ -76,6 +77,7 @@ packages.list <- c(
     "foreign",           # Read Data Stored by Minitab, S, SAS, SPSS, Stata, Systat, Weka, dBase, ...
     "padr",              # Quickly Get Datetime Data Ready for Analysis
     "scales",            # Scale Functions for Visualization
+    "summarytools",      # Tools to Quickly and Neatly Summarize Data
     "tibbletime",        # Time Aware Tibbles
     "units",             # Measurement Units for R Vectors
 
