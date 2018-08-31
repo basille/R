@@ -13,6 +13,7 @@ packages.list <- c(
     "RColorBrewer",     # ColorBrewer Palettes
     "rgdal",            # Bindings for the Geospatial Data Abstraction Library
     "rgeos",            # Interface to Geometry Engine - Open Source (GEOS)
+    "rnaturalearth",    # World Map Data from Natural Earth
     "rworldmap",        # Mapping Global Data
     "rworldxtra",       # Country boundaries at high resolution
     "sf",               # Simple Features for R
@@ -104,9 +105,11 @@ packages.list <- c(
     "devtools",          # Tools to Make Developing R Packages Easier
     "errors",            # Error Propagation for R Vectors
     "formatR",           # Format R Code Automatically
+    "googleway",         # Accesses Google Maps APIs to Retrieve Data and Plot Maps
     "goodpractice",      # Advice on R Package Building
     "Hmisc",             # Harrell Miscellaneous
     "knitr",             # A General-Purpose Package for Dynamic Report Generation in R
+    "liftr",             # Containerize R Markdown Documents for Continuous Reproducibility
     "lintr",             # Static R Code Analysis
     "packagefinder",     # Comfortable Search for R Packages on CRAN (requires R 3.4.0)
     "printr",            # Automatically Print R Objects to Appropriate Formats According to the 'knitr' Output Format
@@ -122,7 +125,7 @@ packages.list <- c(
     )
 
 ## Installation of new packages (i.e. not previously installed):
-packages.new <- packages.list[!(packages.list %in% installed.packages()[,"Package"])]
+(packages.new <- packages.list[!(packages.list %in% installed.packages()[,"Package"])])
 if (length(packages.new))
     install.packages(packages.new)
 
