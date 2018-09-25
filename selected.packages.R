@@ -105,9 +105,11 @@ packages.list <- c(
     "devtools",          # Tools to Make Developing R Packages Easier
     "errors",            # Error Propagation for R Vectors
     "formatR",           # Format R Code Automatically
+    "formattable",       # Create 'Formattable' Data Structures
     "googleway",         # Accesses Google Maps APIs to Retrieve Data and Plot Maps
     "goodpractice",      # Advice on R Package Building
     "Hmisc",             # Harrell Miscellaneous
+    "kableExtra",        # Construct Complex Table with 'kable' and Pipe Syntax
     "knitr",             # A General-Purpose Package for Dynamic Report Generation in R
     "liftr",             # Containerize R Markdown Documents for Continuous Reproducibility
     "lintr",             # Static R Code Analysis
