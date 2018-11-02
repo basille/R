@@ -14,6 +14,7 @@ packages.list <- c(
     "rgdal",            # Bindings for the Geospatial Data Abstraction Library
     "rgeos",            # Interface to Geometry Engine - Open Source (GEOS)
     "rnaturalearth",    # World Map Data from Natural Earth
+    "rnaturalearthdata", # World Vector Map Data from Natural Earth Used in 'rnaturalearth'
     "rworldmap",        # Mapping Global Data
     "rworldxtra",       # Country boundaries at high resolution
     "sf",               # Simple Features for R
@@ -97,6 +98,7 @@ packages.list <- c(
     "visreg",            # Visualization of Regression Models
 
     ## Other packages
+    "av",                # Working with Audio and Video
     "blogdown",          # Create Blogs and Websites with R Markdown
     "bookdown",          # Authoring Books and Technical Documents with R Markdown
     "charlatan",         # Make Fake Data
@@ -138,6 +140,8 @@ pkgGH.list <- data.frame(source = c(
     "basille/basr",
     "basille/hab",
     ## "basille/seasonality",
+    ## "ropensci/av",                      # Working with Audio and Video
+    "thomasp85/gganimate",              # A Grammar of Animated Graphics
     "tidyverse/ggplot2",                # ggplot2 with sf capabilities
     "gadenbuie/ggpomological",          # Pomological Colors
     "xvrdm/ggrough",                    # converts ggplot2 plots to sketchy charts using rough.js
@@ -150,4 +154,4 @@ pkgGH.list$name <- unlist(lapply(strsplit(as.character(pkgGH.list$source), "/"),
 ## Installation of new packages (i.e. not previously installed):
 pkgGH.new <- pkgGH.list$source[!(pkgGH.list$name %in% installed.packages()[,"Package"])]
 if (length(pkgGH.new))
-   devtools::install_github(pkgGH.new)
+   remotes::install_github(pkgGH.new)
