@@ -5,6 +5,7 @@ packages.list <- c(
     "autoimage",        # Multiple Heat Maps for Projected Coordinates
     "ggspatial",        # Spatial Data Framework for ggplot2
     "gstat",            # Spatial and Spatio-Temporal Geostatistical Modelling, Prediction and Simulation
+    "landscapemetrics", # Landscape Metrics for Categorical Map Patterns
     "leaflet",          # Create Interactive Web Maps with the JavaScript 'Leaflet' Library
     "maptools",         # Tools for Reading and Handling Spatial Objects
     "RandomFields",     # Simulation and Analysis of Random Fields
