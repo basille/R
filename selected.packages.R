@@ -98,7 +98,7 @@ packages.list <- c(
     "visreg",            # Visualization of Regression Models
 
     ## Other packages
-    "av",                # Working with Audio and Video
+    ## "av",                # Working with Audio and Video
     "blogdown",          # Create Blogs and Websites with R Markdown
     "bookdown",          # Authoring Books and Technical Documents with R Markdown
     "charlatan",         # Make Fake Data
@@ -117,6 +117,7 @@ packages.list <- c(
     "lintr",             # Static R Code Analysis
     "packagefinder",     # Comfortable Search for R Packages on CRAN (requires R 3.4.0)
     "printr",            # Automatically Print R Objects to Appropriate Formats According to the 'knitr' Output Format
+    "processx",          # Execute and Control System Processes
     "rmarkdown",         # Dynamic Documents for R
     "roxygen2",          # In-Source Documentation for R
     "rticles",           # Article Formats for R Markdown
