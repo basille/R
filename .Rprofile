@@ -43,3 +43,6 @@ if (interactive() & require("cowsay", quietly = TRUE)
 ## Don't work:
 ## [1] "shortcat"    "longcat"     "fish"        "signbunny"   "stretchycat"
 ## [6] "anxiouscat"  "longtailcat" "grumpycat"   "mushroom"
+
+### Setting cache folder for R.cache package
+R.cache::setCacheRootPath(path="~/.R-site/cache")

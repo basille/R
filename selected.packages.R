@@ -120,8 +120,10 @@ packages.list <- c(
     "printr",            # Automatically Print R Objects to Appropriate Formats According to the 'knitr' Output Format
     "processx",          # Execute and Control System Processes
     "rmarkdown",         # Dynamic Documents for R
+    "rorcid",            # Interface to the 'Orcid.org' 'API'
     "roxygen2",          # In-Source Documentation for R
     "rticles",           # Article Formats for R Markdown
+    "scholar",           # Analyse Citation Data from Google Scholar
     "shiny",             # Web Application Framework for R
     "styler",            # Non-Invasive Pretty Printing of R Code
     "sudokuAlt",         # Tools for Making and Spoiling Sudoku Games
