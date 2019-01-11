@@ -127,7 +127,8 @@ packages.list <- c(
     "sudokuAlt",         # Tools for Making and Spoiling Sudoku Games
     "tigris",            # Download TIGER/Line shapefiles from the United States Census Bureau and load into R as 'SpatialDataFrame' or 'sf' objects
     "tint",              # 'tint' is not 'Tufte'
-    "units"              # Measurement Units for R Vectors
+    "units",             # Measurement Units for R Vectors
+    "vitae"              # Curriculum Vitae for R Markdown
     )
 
 ## Installation of new packages (i.e. not previously installed):
