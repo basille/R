@@ -12,7 +12,8 @@ options(
     ## 99)
     max.print = 999,
     ## Use multiple cores to speed up package installation
-    Ncpus = 3
+    Ncpus = 3,
+    orcid_token = "ba2658c7-d9d2-4c62-9bae-a51217910af8"
 )
 
 ### Load packages at the start of R if the package list exists
@@ -43,6 +44,3 @@ if (interactive() & require("cowsay", quietly = TRUE)
 ## Don't work:
 ## [1] "shortcat"    "longcat"     "fish"        "signbunny"   "stretchycat"
 ## [6] "anxiouscat"  "longtailcat" "grumpycat"   "mushroom"
-
-### Setting cache folder for R.cache package
-R.cache::setCacheRootPath(path="~/.R-site/cache")
