@@ -105,6 +105,7 @@ packages.list <- c(
     "charlatan",         # Make Fake Data
     "constants",         # Reference on Constants, Units and Uncertainty
     "cowsay",            # Messages, Warnings, Strings with Ascii Animals
+    "default",           # Change the Default Arguments in R Functions
     "devtools",          # Tools to Make Developing R Packages Easier
     "errors",            # Error Propagation for R Vectors
     "formatR",           # Format R Code Automatically
