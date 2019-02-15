@@ -5,7 +5,7 @@ R_PDFVIEWER='/usr/bin/evince'
 
 ### To get R in English:
 #LANGUAGE=en
-LC_ALL=C
+LC_ALL=en_US.UTF-8
 
 ### Packages in the home directory:
 R_LIBS="~/.R-site/site-library:${R_LIBS}"
