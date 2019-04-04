@@ -75,6 +75,7 @@ packages.list <- c(
     "viridis",           # Default Color Maps from 'matplotlib'
 
     ## Data management
+    "anytime",           # Anything to 'POSIXct' or 'Date' Converter
     "broom",             # Convert Statistical Analysis Objects into Tidy Data Frames
     "fancycut",          # A Fancy Version of 'base::cut'
     "foreign",           # Read Data Stored by Minitab, S, SAS, SPSS, Stata, Systat, Weka, dBase, ...
