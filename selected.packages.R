@@ -3,6 +3,7 @@ packages.list <- c(
 
     ## Spatial packages https://cran.r-project.org/web/views/Spatial.html
     "autoimage",        # Multiple Heat Maps for Projected Coordinates
+    "elevatr",          # Access Elevation Data from Various APIs
     "ggspatial",        # Spatial Data Framework for ggplot2
     "gstat",            # Spatial and Spatio-Temporal Geostatistical Modelling, Prediction and Simulation
     "landscapemetrics", # Landscape Metrics for Categorical Map Patterns
