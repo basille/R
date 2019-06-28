@@ -3,6 +3,7 @@ packages.list <- c(
 
     ## Spatial packages https://cran.r-project.org/web/views/Spatial.html
     "autoimage",        # Multiple Heat Maps for Projected Coordinates
+    "concaveman",       # A Very Fast 2D Concave Hull Algorithm
     "elevatr",          # Access Elevation Data from Various APIs
     "ggspatial",        # Spatial Data Framework for ggplot2
     "gstat",            # Spatial and Spatio-Temporal Geostatistical Modelling, Prediction and Simulation
