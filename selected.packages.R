@@ -65,6 +65,7 @@ packages.list <- c(
     "colorRamps",        # Builds color tables
     "cowplot",           # Streamlined Plot Theme and Plot Annotations for 'ggplot2'
     "extrafont",         # Tools for using fonts
+    "ggalluvial",        # Alluvial Diagrams in 'ggplot2'
     "ggalt",             # Extra Coordinate Systems, Geoms, Statistical Transformations, Scales & Fonts for 'ggplot2'
     "ggforce",           # Accelerating 'ggplot2'
     "ggfortify",         # Data Visualization Tools for Statistical Analysis Results
@@ -157,6 +158,7 @@ pkgGH.list <- data.frame(source = c(
     "xvrdm/ggrough",                    # converts ggplot2 plots to sketchy charts using rough.js
     "cttobin/ggthemr",                  # ggplot2 themes (for posters/presentations)
     "cloudyr/limer",                    # A LimeSurvey R client
+    "cloudyr/rmote",                    # Running R on a remote server
     "tylermorganwall/rayshader"         # Producing hillshaded maps of elevation matrices with raytracing
 ))
 pkgGH.list$name <- unlist(lapply(strsplit(as.character(pkgGH.list$source), "/"), function(li) li[2]))
