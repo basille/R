@@ -70,6 +70,7 @@ packages.list <- c(
     "ggforce",           # Accelerating 'ggplot2'
     "ggfortify",         # Data Visualization Tools for Statistical Analysis Results
     "ggrepel",           # Repulsive Text and Label Geoms for 'ggplot2'
+    "ggthemes",          # Extra Themes, Scales and Geoms for 'ggplot2'
     "gridExtra",         # Miscellaneous Functions for "Grid" Graphics
     "hexbin",            # Hexagonal Binning Routines
     "hrbrthemes",        # Additional Themes, Theme Components and Utilities for 'ggplot2'
