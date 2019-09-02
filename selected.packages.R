@@ -67,6 +67,7 @@ packages.list <- c(
     "extrafont",         # Tools for using fonts
     "ggalluvial",        # Alluvial Diagrams in 'ggplot2'
     "ggalt",             # Extra Coordinate Systems, Geoms, Statistical Transformations, Scales & Fonts for 'ggplot2'
+    "ggbeeswarm",        # Categorical Scatter (Violin Point) Plots
     "ggforce",           # Accelerating 'ggplot2'
     "ggfortify",         # Data Visualization Tools for Statistical Analysis Results
     "ggrepel",           # Repulsive Text and Label Geoms for 'ggplot2'
