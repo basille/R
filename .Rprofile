@@ -15,6 +15,8 @@ if (interactive()) {
         ## Increase amount of information printed on screen (default is
         ## 99):
         max.print = 999,
+        ## Turn scientific notation on after ~10 digits
+        scipen = 5,
         ## Use multiple cores to speed up package installation:
         Ncpus = 3,
         orcid_token = "ba2658c7-d9d2-4c62-9bae-a51217910af8",
