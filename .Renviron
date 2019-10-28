@@ -9,3 +9,7 @@ LC_ALL=en_US.UTF-8
 
 ### Packages in the home directory:
 R_LIBS="~/.R-site/site-library:${R_LIBS}"
+
+### Check if condition has length greater than one in if/while/&&/|| (for R CMD check):
+_R_CHECK_LENGTH_1_CONDITION_=verbose
+_R_CHECK_LENGTH_1_LOGIC2_=verbose
