@@ -54,6 +54,9 @@ if (interactive()) {
 
     remotes::install_github(\"basille/basr\")"))
 
+    ## Conflict resolution with conflicted:
+    library("conflicted")
+
     ## ## Change some defaults
     ## ## Table with NAs
     ## default::default(table) <- list(useNA = "always")

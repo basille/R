@@ -154,6 +154,7 @@ pkgGH.list <- data.frame(source = c(
     "basille/hab",
     ## "basille/seasonality",
     ## "ropensci/av",                      # Working with Audio and Video
+    "r-lib/conflicted",                 # Alternative conflict resolution strategy
     "thomasp85/gganimate",              # A Grammar of Animated Graphics
     "tidyverse/ggplot2",                # ggplot2 with sf capabilities
     "gadenbuie/ggpomological",          # Pomological Colors
