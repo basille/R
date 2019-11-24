@@ -124,6 +124,7 @@ packages.list <- c(
     "knitr",             # A General-Purpose Package for Dynamic Report Generation in R
     "liftr",             # Containerize R Markdown Documents for Continuous Reproducibility
     "lintr",             # Static R Code Analysis
+    "magick",            # Advanced Graphics and Image-Processing in R
     "packagefinder",     # Comfortable Search for R Packages on CRAN (requires R 3.4.0)
     "printr",            # Automatically Print R Objects to Appropriate Formats According to the 'knitr' Output Format
     "processx",          # Execute and Control System Processes
@@ -160,6 +161,7 @@ pkgGH.list <- data.frame(source = c(
     "gadenbuie/ggpomological",          # Pomological Colors
     "xvrdm/ggrough",                    # converts ggplot2 plots to sketchy charts using rough.js
     "cttobin/ggthemr",                  # ggplot2 themes (for posters/presentations)
+    "lina2497/Giftmap",                 # Create map posters
     "cloudyr/limer",                    # A LimeSurvey R client
     "cloudyr/rmote",                    # Running R on a remote server
     "tylermorganwall/rayshader"         # Producing hillshaded maps of elevation matrices with raytracing
