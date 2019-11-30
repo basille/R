@@ -76,6 +76,7 @@ packages.list <- c(
     "hexbin",            # Hexagonal Binning Routines
     "hrbrthemes",        # Additional Themes, Theme Components and Utilities for 'ggplot2'
     "factoextra",        # Extract and Visualize the Results of Multivariate Data Analyses
+    "rphylopic",         # Get Silhouettes of Organisms from 'Phylopic'
     "scatterpie",        # Scatter Pie Plot
     "tweenr",            # Interpolate Data for Smooth Animations
     "viridis",           # Default Color Maps from 'matplotlib'
@@ -114,6 +115,7 @@ packages.list <- c(
     "cowsay",            # Messages, Warnings, Strings with Ascii Animals
     "default",           # Change the Default Arguments in R Functions
     "devtools",          # Tools to Make Developing R Packages Easier
+    "distill",           # 'R Markdown' Format for Scientific and Technical Writing
     "errors",            # Error Propagation for R Vectors
     "formatR",           # Format R Code Automatically
     "formattable",       # Create 'Formattable' Data Structures
