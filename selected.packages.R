@@ -76,6 +76,7 @@ packages.list <- c(
     "hexbin",            # Hexagonal Binning Routines
     "hrbrthemes",        # Additional Themes, Theme Components and Utilities for 'ggplot2'
     "factoextra",        # Extract and Visualize the Results of Multivariate Data Analyses
+    "patchwork",         # The Composer of Plots
     "rphylopic",         # Get Silhouettes of Organisms from 'Phylopic'
     "scatterpie",        # Scatter Pie Plot
     "tweenr",            # Interpolate Data for Smooth Animations
