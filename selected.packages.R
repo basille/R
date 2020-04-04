@@ -22,6 +22,8 @@ packages.list <- c(
     "rworldxtra",       # Country boundaries at high resolution
     "sf",               # Simple Features for R
     "sp",               # Classes and Methods for Spatial Data
+    "spData",           # Datasets for spatial analysis
+    ## "spDataLarge",      # Large spatial datasets (see below)
     "spacetime",        # Classes and Methods for Spatio-Temporal Data
     "spatstat",         # Spatial Point Pattern Analysis, Model-Fitting, Simulation, Tests
     "spdep",            # Spatial Dependence: Weighting Schemes, Statistics and Models
@@ -150,6 +152,8 @@ packages.list <- c(
 if (length(packages.new))
     install.packages(packages.new)
 
+## spDataLarge
+install.packages("spDataLarge", repos = "https://nowosad.github.io/drat/", type = "source")
 
 
 ## Packages on GitHub
