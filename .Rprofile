@@ -128,6 +128,8 @@ if (interactive()) {
         if (adehabitat) {
             packages.list <- c(
                 "adehabitatHS",      # Analysis of Habitat Selection by Animals
+                "amt",               # Animal Movement Tools
+                "ctmm",              # Continuous-Time Movement Modeling
                 "move",              # Visualizing and Analyzing Animal Track Data
                 "rpostgis",          # R Interface to a 'PostGIS' Database
                 "sftrack"            # Modern Classes for Tracking and Movement Data
