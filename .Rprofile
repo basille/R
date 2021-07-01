@@ -64,7 +64,15 @@ if (interactive()) {
     ## default::default(as.data.frame.matrix) <- list(stringsAsFactors = FALSE)
 
     ## Function to install selected packages, by theme
-    install.selected <- function(all = TRUE, spatial = all, adehabitat = all, tidyverse = all, plotting = all, data = all, modeling = all, others = all, github = all)
+    install.selected <- function(all = TRUE,
+        spatial = all,
+        adehabitat = all,
+        tidyverse = all,
+        plotting = all,
+        data = all,
+        modeling = all,
+        others = all,
+        github = all)
     {
         ## Packages on CRAN
 
@@ -285,6 +293,7 @@ if (interactive()) {
                 "magick",            # Advanced Graphics and Image-Processing in R
                 "nomnoml",           # Sassy 'UML' Diagrams
                 "packagefinder",     # Comfortable Search for R Packages on CRAN (requires R 3.4.0)
+                "pkgdown",           # Make Static HTML Documentation for a Package
                 "printr",            # Automatically Print R Objects to Appropriate Formats According to the 'knitr' Output Format
                 "processx",          # Execute and Control System Processes
                 "remotes",           # R Package Installation from Remote Repositories, Including 'GitHub'
